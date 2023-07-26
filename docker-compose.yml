@@ -1,0 +1,28 @@
+version: '3'
+services:
+  backend:
+    build:
+      context: ./serverjwt
+      dockerfile: dockerfile
+      # ports:
+      #   - 6001:3000
+    networks:
+      my_network:
+        ipv4_address: 172.20.0.11
+    restart: on-failure
+  frontend:
+    build:
+      context: ./clientjwt
+      dockerfile: dockerfile
+    restart: on-failure
+    # ports:
+    #   - 4455:5173
+    networks:
+      my_network:
+        ipv4_address: 172.20.0.10
+    #command: npm start
+networks:
+  my_network:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
