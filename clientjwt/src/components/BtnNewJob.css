@@ -1,0 +1,23 @@
+.btn-new-job {
+	background-color: rgb(0,0,0,0.3);
+	width: 100%;
+	border: 1px solid white;
+	border-radius: 5px;
+	display:flex;
+	flex-direction: column;
+	align-items:center;
+	color:red;
+}
+
+.btn-new-job > button {
+	width: 99%;
+}
+
+.btn-new-job form {
+	display:flex;
+	flex-direction: row;
+}
+
+.disabled {
+	display:none;
+}
