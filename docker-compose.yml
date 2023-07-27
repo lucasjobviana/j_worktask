@@ -1,5 +1,18 @@
 version: '3'
 services:
+  database:
+    image: mysql:8.0.29
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: j_worktask_db
+    networks:
+      my_network:
+        ipv4_address: 172.20.0.12
+    # ports:
+    #   - 3306:3306
+    volumes:
+      - ./j_worktask_script.sql/docker-entrypoint-initdb.d/j_worktask_script.sql
   backend:
     build:
       context: ./serverjwt
@@ -10,6 +23,16 @@ services:
       my_network:
         ipv4_address: 172.20.0.11
     restart: on-failure
+    environment:
+      # Aqui setamos nossas variáveis de ambiente - não se preocupe, mais para frente, ainda nesse dia, temos
+      # uma seção inteira destinada a explicá-las!
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_HOST: database
+      MYSQL_PORT: 3306
+    depends_on:
+      - database
+
   frontend:
     build:
       context: ./clientjwt
@@ -21,6 +44,7 @@ services:
       my_network:
         ipv4_address: 172.20.0.10
     #command: npm start
+
 networks:
   my_network:
     ipam:
