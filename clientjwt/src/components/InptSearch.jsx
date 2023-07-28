@@ -1,19 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ControlPanelContext } from '../context'
 import FormNewJob from './FormNewJob';
 import SearchFilters from './SearchFilters'
 import './InptSearch.css'
-import icone from './search24.ico'
-import iconeMenu from './menu24.ico'
+import icone from '../assets/icons/search24.ico'
+import iconeMenu from '../assets/icons/filter24.ico'
 
 const InptSearch = () => {
+	const { filterBy } = useContext(ControlPanelContext)
 
 	const toggleSearch = ({target}) => {
 		target.nextSibling.classList.toggle('disabled');	
 	}
 	
 	const handleClick = ({target}) => {
-		const filterTypeElement = target.parentNode.querySelector('input[name="filterType"]:checked');
-		console.log(filterTypeElement.value)
+		//const filterTypeElement = target.parentNode.querySelector('input[name="filterType"]:checked');
+		
+		console.log(filterBy)
 	}
 	
 	return (

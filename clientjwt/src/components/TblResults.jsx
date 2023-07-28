@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import FormNewJob from './FormNewJob';
 import SearchFilters from './SearchFilters'
-import './InptSearch.css'
-import icone from './search24.ico'
-import iconeMenu from './menu24.ico'
+import './TblResults.css'
+import icone from '../assets/icons/search24.ico'
+import iconeMenu from '../assets/icons/menu24.ico'
+import tasks from '../../tests/mocks/tasks'
+import { ControlPanelContext } from '../context'
+import { WorkContext } from '../context'
 
 const TblResults = () => {
-
+	const { filterBy, setFilterBy, addWorkView, workViews } = useContext(ControlPanelContext);
+	const { works, setWorks } = useContext(WorkContext);
+	console.log(workViews)
 	const toggleSearch = ({target}) => {
 		target.nextSibling.classList.toggle('disabled');	
 	}
@@ -15,32 +20,38 @@ const TblResults = () => {
 		const filterTypeElement = target.parentNode.querySelector('input[name="filterType"]:checked');
 		console.log(filterTypeElement.value)
 	}
+
+	const showWorkDetails = (work) => {
+		!addWorkView(work) && document.querySelector(`#work-view${work}`).focus();
+	}
 	
 	return (
-		<table className='tbl-results'>
+	<div className='tbl-results'>
+		<table>
 			<thead>
 				<tr>
+					<th>Id</th>
 					<th>Nome</th>
 					<th>Descricao</th>
-					<th>Id</th>
 					<th>Tarefas</th>
+					<th>Finalizadas</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>Projeto Todo List</td>
-					<td>Criar um projeto todo list com react.</td>
-					<td>1</td>
-					<td>5</td>
-				</tr>
-				<tr>
-					<td>Projeto Docker List</td>
-					<td>Criar um projeto todo list com vanila js e docker.</td>
-					<td>2</td>
-					<td>6</td>
-				</tr>
+			{
+				works.map((work,index)=>{ 
+					const totalTasks = Math.ceil(Math.random()*10);
+					const qtdCompleteTasks = Math.ceil(Math.random()*totalTasks)
+				  return <tr key={`work_${index}`} onClick={()=>showWorkDetails(work.id)} >
+				  	<td>{work.id}</td><td>{work.name}</td><td>{work.desc}</td>
+				  	<td>{totalTasks}</td><td>{qtdCompleteTasks}</td>
+				  </tr>
+				})
+				
+			}
 			</tbody>
 		</table>
+	</div>
 	);
 }
 

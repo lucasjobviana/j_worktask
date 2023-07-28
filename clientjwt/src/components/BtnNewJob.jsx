@@ -1,7 +1,7 @@
 import React from 'react';
 import FormNewJob from './FormNewJob';
 import './BtnNewJob.css'
-import iconeAdd from './add24.ico'
+import iconeAdd from '../assets/icons/add24.ico'
 
 const BtnNewJob = () => {
 
