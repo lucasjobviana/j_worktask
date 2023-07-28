@@ -1,6 +1,9 @@
 import React, { useContext } from 'react';
 import { TaskContext } from '../context';
 import TaskViews from './TaskViews'
+import iconeAdd from '../assets/icons/add24.ico'
+import iconDel from '../assets/icons/del24.ico'
+import iconCheck from '../assets/icons/check24.ico'
 import './TaskView.css'
 
 const TaskView = ({ task, left=0, tabs = [] }) => { 
@@ -13,8 +16,11 @@ const TaskView = ({ task, left=0, tabs = [] }) => {
   <>
     <tr className={`task-view`}   id={`task-view-${task.id}`}>
       <td className='span-name'>{`  ${tabElements} ${task.name}`}</td>
-      <td><input type='checkbox' /> </td>
+      <td><img style={{background:'red'}} src={iconCheck}  /> </td>
+      <td><img  src={iconeAdd}  /> </td>
+      <td><img  src={iconDel}  /> </td>
       <td className='span-descrition'>{task.desc}</td>
+      
       
     </tr>
     {subTaskElements}

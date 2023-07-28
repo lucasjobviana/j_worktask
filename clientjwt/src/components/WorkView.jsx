@@ -1,7 +1,10 @@
 import React, {  useRef, useEffect, useContext } from 'react';
 // import FormNewJob from './FormNewJob';
 import './WorkView.css'
-// import iconeAdd from '../assets/icons/add24.ico'
+import iconeDel from '../assets/icons/del24.ico'
+import iconClose from '../assets/icons/close24.ico'
+import iconMin from '../assets/icons/min24.ico'
+import iconEdit from '../assets/icons/edit24.ico'
 import {  TaskContext } from '../context'
 import TaskViews from './TaskViews'
 
@@ -19,9 +22,12 @@ const WorkView = ({work}) => {
 	
 	return (
 		<div ref={divRef} tabIndex={0} className='work-view' id={`work-view${work.id}`} >
-			<p>Id: {work.id}</p>
-			<p>Nome: {work.name}</p>
-			<p>Desc: {work.desc}</p>
+			<div className='topBarWorks'>
+			<img src={iconClose}  /><img src={iconMin}  /><img src={iconeDel}  /><img src={iconEdit}  />
+			</div>
+			<h2>{`${work.id} - ${work.name}`}</h2>
+			<h3> {work.desc}</h3>
+			
 			<div className='tableContainer'>
 			<table className='task-views'><TaskViews taskViews={ tasksOfWork } /></table>
 			</div>

@@ -13,3 +13,15 @@ table td {}
 td {
 	min-width: 0px;
 }
+
+.topBarWorks {
+	position: relative;
+	background-color: red;
+	display: flex;
+	flex-direction: row-reverse;
+	border-radius: 5px;
+}
+
+.topBarWorks img {
+	margin: 1%;
+}

@@ -9,6 +9,26 @@
 	background-color: rgba(255, 255, 255)
 }
 
+.work-views {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	/* background-color: blue; */
+	width: 100vw;
+}
+
+.work-view {
+	border: 1px solid white;
+	width: 80%;
+	margin-top: 1%;
+	text-align: justify;
+	padding: 1%;
+}
+
+.work-view h2 {
+	text-align: center;
+}
+
 .work-views tr td {
 	white-space: pre;
 }
@@ -25,8 +45,8 @@
 
 .task-views {}
 
-.span-name:hover+td+.span-descrition,
-.span-name:focus+td+.span-descrition,
-.span-name:active+td+.span-descrition {
+.span-name:hover+td+td+td+.span-descrition,
+.span-name:focus+td+td+td+.span-descrition,
+.span-name:active+td+td+td+.span-descrition {
 	display: inline-block;
 }
