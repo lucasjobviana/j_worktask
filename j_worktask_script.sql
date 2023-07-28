@@ -16,7 +16,7 @@ CREATE TABLE people (
     UNIQUE(email)
 );
 
-CREATE TABLE transactions(
+CREATE TABLE jtransactions(
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(60) NOT NULL,
     description VARCHAR(100),
@@ -28,7 +28,7 @@ CREATE TABLE transactions(
     REFERENCES people(id)
 );
 
-CREATE TABLE logs(
+CREATE TABLE jlogs(
     id INT NOT NULL AUTO_INCREMENT,
     event VARCHAR(100) NOT NULL,
     timestamp BIGINT NOT NULL,
