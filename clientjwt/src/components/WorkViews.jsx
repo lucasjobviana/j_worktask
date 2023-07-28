@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import FormNewJob from './FormNewJob';
+// import FormNewJob from './FormNewJob';
 import WorkView from './WorkView';
 import './BtnNewJob.css'
-import iconeAdd from '../assets/icons/add24.ico'
+// import iconeAdd from '../assets/icons/add24.ico'
 import { ControlPanelContext, WorkContext } from '../context'
 
 const WorkViews = () => {
@@ -12,7 +12,7 @@ const WorkViews = () => {
 	return (
 		<div className='work-views'>
 		{
-			workViews.map((w)=> <WorkView work={works.find((work) => work.id == w)} /> )
+			workViews.map((w,index)=> <WorkView key={`Work_view${index}`} work={works.find((work) => work.id == w)} /> )
 		}
 		</div>
 	);

@@ -1,25 +1,25 @@
 import React, { useContext } from 'react';
-import FormNewJob from './FormNewJob';
-import SearchFilters from './SearchFilters'
+// import FormNewJob from './FormNewJob';
+// import SearchFilters from './SearchFilters'
 import './TblResults.css'
-import icone from '../assets/icons/search24.ico'
-import iconeMenu from '../assets/icons/menu24.ico'
-import tasks from '../../tests/mocks/tasks'
+// import icone from '../assets/icons/search24.ico'
+// import iconeMenu from '../assets/icons/menu24.ico'
+// import tasks from '../../tests/mocks/tasks'
 import { ControlPanelContext } from '../context'
 import { WorkContext } from '../context'
 
 const TblResults = () => {
-	const { filterBy, setFilterBy, addWorkView, workViews } = useContext(ControlPanelContext);
-	const { works, setWorks } = useContext(WorkContext);
+	const {  addWorkView, workViews } = useContext(ControlPanelContext);
+	const { works } = useContext(WorkContext);
 	console.log(workViews)
-	const toggleSearch = ({target}) => {
-		target.nextSibling.classList.toggle('disabled');	
-	}
+	// const toggleSearch = ({target}) => {
+	// 	target.nextSibling.classList.toggle('disabled');	
+	// }
 	
-	const handleClick = ({target}) => {
-		const filterTypeElement = target.parentNode.querySelector('input[name="filterType"]:checked');
-		console.log(filterTypeElement.value)
-	}
+	// const handleClick = ({target}) => {
+	// 	const filterTypeElement = target.parentNode.querySelector('input[name="filterType"]:checked');
+	// 	console.log(filterTypeElement.value)
+	// }
 
 	const showWorkDetails = (work) => {
 		!addWorkView(work) && document.querySelector(`#work-view${work}`).focus();
@@ -42,10 +42,10 @@ const TblResults = () => {
 				works.map((work,index)=>{ 
 					const totalTasks = Math.ceil(Math.random()*10);
 					const qtdCompleteTasks = Math.ceil(Math.random()*totalTasks)
-				  return <tr key={`work_${index}`} onClick={()=>showWorkDetails(work.id)} >
-				  	<td>{work.id}</td><td>{work.name}</td><td>{work.desc}</td>
-				  	<td>{totalTasks}</td><td>{qtdCompleteTasks}</td>
-				  </tr>
+					return <tr key={`work_${index}`} onClick={()=>showWorkDetails(work.id)} >
+					<td>{work.id}</td><td>{work.name}</td><td>{work.desc}</td>
+					<td>{totalTasks}</td><td>{qtdCompleteTasks}</td>
+					</tr>
 				})
 				
 			}

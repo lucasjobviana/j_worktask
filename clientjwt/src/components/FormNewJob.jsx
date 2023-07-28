@@ -7,7 +7,7 @@ const FormNewJob = () => {
 	const [ isValidDescrition, setIsValidDescrition ] = useState(false);
 	
 	const validateName = (target) => {
-	 target.value.length > 2 ? setIsValidName(true) : setIsValidName(false);
+		target.value.length > 2 ? setIsValidName(true) : setIsValidName(false);
 	}
 	
 	const validateDescrition = (target) => {

@@ -6,9 +6,9 @@ export default function ControlPanelProvider({ children }) {
   const [workViews, setWorkViews] = useState([]);
   
   const addWorkView = (workView) => {
-  	if(workViews.find((w) => w === workView)) return false;
-		setWorkViews([...workViews, workView ]);
-		return true
+    if(workViews.find((w) => w === workView)) return false;
+    setWorkViews([...workViews, workView ]);
+    return true
   }
 
   return (

@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
+// import PropTypes from 'prop-types'
 import BtnNewJob from '../components/BtnNewJob'
 import InptSearch from '../components/InptSearch'
 import TblResults from '../components/TblResults'

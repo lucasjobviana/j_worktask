@@ -1,9 +1,9 @@
-import { useEffect, useContext } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import TaskProvider from './context/TaskProvider'
+import React, { useEffect, useContext } from 'react'
+// import reactLogo from './assets/react.svg'
+// import viteLogo from '/vite.svg'
+// import TaskProvider from './context/TaskProvider'
 import ControlPanelProvider from './context/ControlPanelProvider'
-import { Switch, Redirect, Route } from 'react-router-dom/cjs/react-router-dom.min'
+import { Switch, Route } from 'react-router-dom/cjs/react-router-dom.min'
 import ControlPanel from './pages/ControlPanel'
 import mockWorks from '../tests/mocks/works'
 import mockTasks from '../tests/mocks/tasks'
@@ -29,13 +29,11 @@ function App() {
 	
   return (
     <>
-		     <Switch>
-		       <ControlPanelProvider>
-		         <Route exact path='/' component={ControlPanel} ></Route>
-		       </ControlPanelProvider>
-		     </Switch>
-       
-       
+	<Switch>
+	<ControlPanelProvider>
+		<Route exact path='/' component={ControlPanel} ></Route>
+	</ControlPanelProvider>
+	</Switch>
     </>
   )
 }

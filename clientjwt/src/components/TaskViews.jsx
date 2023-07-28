@@ -1,18 +1,16 @@
-import React, { useContext } from 'react';
-import FormNewJob from './FormNewJob';
+import  React from 'react';
 import TaskView from './TaskView';
 import './BtnNewJob.css'
-import iconeAdd from '../assets/icons/add24.ico'
-import { ControlPanelContext, TaskContext } from '../context'
+
+//import { TaskContext } from '../context'
 
 const TaskViews = ({taskViews,left = 0,tabs = []}) => {
-	const { tasks } = useContext(TaskContext);console.log(taskViews)
+	//const { tasks } = useContext(TaskContext);console.log(taskViews)
 	
 	return (
 		<>
-		
 		{
-			taskViews.map((t)=> <TaskView task={t} left={left} tabs={tabs}/> )
+			taskViews.map((t,index)=> <TaskView key={`taskView${index}`} task={t} left={left} tabs={tabs}/> )
 		}
 
 		</>

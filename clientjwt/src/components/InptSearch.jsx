@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { ControlPanelContext } from '../context'
-import FormNewJob from './FormNewJob';
+// import FormNewJob from './FormNewJob';
 import SearchFilters from './SearchFilters'
 import './InptSearch.css'
 import icone from '../assets/icons/search24.ico'
@@ -16,7 +16,7 @@ const InptSearch = () => {
 	const handleClick = ({target}) => {
 		//const filterTypeElement = target.parentNode.querySelector('input[name="filterType"]:checked');
 		
-		console.log(filterBy)
+		console.log(target,filterBy)
 	}
 	
 	return (
