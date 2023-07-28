@@ -19,6 +19,8 @@ const FormNewJob = () => {
 		const { target: { form : { nameNewJob } }  } = event;
 		const { target: { form : { descNewJob } }  } = event; 
 		addWork({ name: nameNewJob.value, desc:descNewJob.value})
+		nameNewJob.value = '';
+		descNewJob.value = '';
 	}
 	
 	

@@ -12,7 +12,7 @@ const WorkViews = () => {
 	return (
 		<div className='work-views'>
 		{
-			workViews.map((w)=><div className='work-view'> <WorkView work={works.find((work) => work.id == w)} />  </div>)
+			workViews.map((w)=> <WorkView work={works.find((work) => work.id == w)} /> )
 		}
 		</div>
 	);

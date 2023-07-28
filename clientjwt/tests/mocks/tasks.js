@@ -240,6 +240,22 @@ const tasks = [
     user: 7,
     parentTask: 19, // A tarefa 30 é uma subtask da tarefa 19.
   },
+    {
+    id: 31,
+    name: "Implementar funcionalidade de comentar em postagens.",
+    desc: "Adicionar a funcionalidade de permitir que os usuários comentem nas postagens do blog.",
+    work: 2,
+    user: 7,
+    parentTask: 21, // A tarefa 30 é uma subtask da tarefa 19.
+  },
+      {
+    id: 32,
+    name: "Implementar funcionalidade de comentar em postagens.",
+    desc: "Adicionar a funcionalidade de permitir que os usuários comentem nas postagens do blog.",
+    work: 2,
+    user: 7,
+    parentTask: 31, // A tarefa 30 é uma subtask da tarefa 19.
+  },
 ];
 
 export default tasks;

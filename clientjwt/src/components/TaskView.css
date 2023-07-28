@@ -1,0 +1,23 @@
+
+.span-descrition {
+	position: absolute;
+	top:0px;
+	left:0px;
+	width: 100vw;
+	display:none;
+	background-color: rgba(255,255,255,0.4)
+}
+
+.span-name:hover + td + .span-descrition,
+.span-name:focus + td + .span-descrition,
+.span-name:active + td + .span-descrition {
+	display: inline-block;
+}
+
+
+
+.sub {
+	position: relative;
+	left:10px;
+}
+
