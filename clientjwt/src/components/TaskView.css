@@ -1,23 +1,32 @@
-
 .span-descrition {
 	position: absolute;
-	top:0px;
-	left:0px;
-	width: 100vw;
-	display:none;
-	background-color: rgba(255,255,255,0.4)
+	z-index: 5;
+	top: 0px;
+	left: 0px;
+	text-align: center;
+	width: 100%;
+	display: none;
+	background-color: rgba(255, 255, 255)
 }
 
-.span-name:hover + td + .span-descrition,
-.span-name:focus + td + .span-descrition,
-.span-name:active + td + .span-descrition {
+.work-views tr td {
+	white-space: pre;
+}
+
+.tableContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.tableContainer table {
+	border: 1px solid white;
+}
+
+.task-views {}
+
+.span-name:hover+td+.span-descrition,
+.span-name:focus+td+.span-descrition,
+.span-name:active+td+.span-descrition {
 	display: inline-block;
 }
-
-
-
-.sub {
-	position: relative;
-	left:10px;
-}
-

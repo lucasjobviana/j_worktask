@@ -22,7 +22,9 @@ const WorkView = ({work}) => {
 			<p>Id: {work.id}</p>
 			<p>Nome: {work.name}</p>
 			<p>Desc: {work.desc}</p>
+			<div className='tableContainer'>
 			<table className='task-views'><TaskViews taskViews={ tasksOfWork } /></table>
+			</div>
 		</div>
 	);
 }

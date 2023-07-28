@@ -5,16 +5,16 @@ import './BtnNewJob.css'
 import iconeAdd from '../assets/icons/add24.ico'
 import { ControlPanelContext, TaskContext } from '../context'
 
-const TaskViews = ({taskViews,left = 0}) => {
+const TaskViews = ({taskViews,left = 0,tabs = []}) => {
 	const { tasks } = useContext(TaskContext);console.log(taskViews)
 	
 	return (
 		<>
 		
 		{
-			taskViews.map((t)=> <TaskView task={t} left={left}/> )
+			taskViews.map((t)=> <TaskView task={t} left={left} tabs={tabs}/> )
 		}
-		
+
 		</>
 	);
 }

@@ -1,19 +1,14 @@
-.work-view{
+.work-view {
 	position: relative;
- 
 }
 
-table {
-	text-align:left;
+.work-view table {
+	text-align: left;
 }
 
-table tr {
-	
-}
+table tr {}
 
-table td {
-	 
-}
+table td {}
 
 td {
 	min-width: 0px;

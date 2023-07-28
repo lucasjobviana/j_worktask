@@ -1,4 +1,4 @@
-const works = [
+const statusTask = [
   {
     id: 1,
     name: "Criado",
@@ -26,4 +26,4 @@ const works = [
   }
 ];
 
-export default works;
+export default statusTask;
