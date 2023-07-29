@@ -1,5 +1,5 @@
 import React, {  useRef, useEffect, useContext } from 'react';
-// import FormNewJob from './FormNewJob';
+import WorkViewTopBar from './WorkViewTopBar';
 import './WorkView.css'
 import iconeDel from '../assets/icons/del24.ico'
 import iconClose from '../assets/icons/close24.ico'
@@ -22,9 +22,8 @@ const WorkView = ({work}) => {
 	
 	return (
 		<div ref={divRef} tabIndex={0} className='work-view' id={`work-view${work.id}`} >
-			<div className='topBarWorks'>
-			<img src={iconClose}  /><img src={iconMin}  /><img src={iconeDel}  /><img src={iconEdit}  />
-			</div>
+			<WorkViewTopBar />
+			
 			<h2>{`${work.id} - ${work.name}`}</h2>
 			<h3> {work.desc}</h3>
 			
