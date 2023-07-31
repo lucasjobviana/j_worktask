@@ -1,35 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React, { useEffect, useContext } from 'react'
+// import reactLogo from './assets/react.svg'
+// import viteLogo from '/vite.svg'
+// import TaskProvider from './context/TaskProvider'
+import ControlPanelProvider from './context/ControlPanelProvider'
+import { Switch, Route } from 'react-router-dom/cjs/react-router-dom.min'
+import ControlPanel from './pages/ControlPanel'
+import mockWorks from '../tests/mocks/works'
+import mockTasks from '../tests/mocks/tasks'
+import mockStatusTask from '../tests/mocks/statusTask'
+import { WorkContext, TaskContext, StatusTaskContext } from './context'
 import './App.css'
 
+
 function App() {
-  const [count, setCount] = useState(0)
-
-  
-
+	const { tasks, setTasks } = useContext(TaskContext);
+	const { works, setWorks } = useContext(WorkContext);
+	const { statusTask, setStatusTask } = useContext(StatusTaskContext);
+	
+	
+	useEffect(()=>{
+		console.log('App.useEffect([])[works]: ',works);
+		console.log('App.useEffect([])][tasks]: ', tasks);
+		console.log('App.useEffect([])][tasks]: ', statusTask);
+		setWorks(mockWorks);
+		setTasks(mockTasks);
+		setStatusTask(mockStatusTask);
+	},[]);
+	
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+	<Switch>
+	<ControlPanelProvider>
+		<Route exact path='/' component={ControlPanel} ></Route>
+	</ControlPanelProvider>
+	</Switch>
     </>
   )
 }

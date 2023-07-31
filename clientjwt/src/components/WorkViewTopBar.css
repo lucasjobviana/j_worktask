@@ -1,0 +1,12 @@
+.top-bar {
+	position: relative;
+	background-color: red;
+	display: flex;
+	flex-direction: row-reverse;
+	border-radius: 5px;
+}
+
+.top-bar img {
+	margin: 1%;
+	cursor: pointer;
+}
