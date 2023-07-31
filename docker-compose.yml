@@ -8,6 +8,8 @@ services:
       my_network:
         ipv4_address: 172.20.0.11
     restart: on-failure
+    volumes:
+      - ./serverjwt/src:/app/src
     environment:
       MYSQL_USER: root
       MYSQL_PASSWORD: root
@@ -23,6 +25,8 @@ services:
     networks:
       my_network:
         ipv4_address: 172.20.0.10
+    volumes:
+      - ./clientjwt/src:/app/src
   database:
     image: mysql:8.0.29
     restart: always
