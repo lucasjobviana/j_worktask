@@ -37,3 +37,7 @@ CREATE TABLE jlogs(
     CONSTRAINT fk_logs_person_id FOREIGN KEY (person_id)
     REFERENCES people(id)
 );
+
+insert into people(first_name,last_name,email) values('lucas','viana','lucas@gmail.com');
+insert into people(first_name,last_name,email) values('murilo','viana','murilo@gmail.com');
+insert into people(first_name,last_name,email) values('adivar','viana','adivar@gmail.com');
