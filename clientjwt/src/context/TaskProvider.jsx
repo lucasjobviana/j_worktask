@@ -18,9 +18,9 @@ export default function TaskProvider({ children }) {
 
   return (
     <TaskContext.Provider value={{ tasks, setTasks, addTask }}>
-      <div className="task-context">
+      <>
         { children }
-      </div>
+      </>
     </TaskContext.Provider>
   );
 

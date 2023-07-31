@@ -11,11 +11,23 @@ const InptSearchFilter = () => {
 	return (
 		<div className='inpt-search-filters disabled'>
 			<form>
-				<input type='radio' onChange={handleChange} name='filterType' value='work' checked={filterBy === 'work'} />Trabalhos
-				<input type='radio' onChange={handleChange} name='filterType' value='task' checked={filterBy === 'task'} />Tarefas	
+			<div>
+				<input type='radio' onChange={handleChange} name='filterType' value='work' checked={filterBy === 'work'} /> 
+				<label>Trabalho</label>
+			</div>
+			
+			<div>
+				 <input type='radio' onChange={handleChange} name='filterType' value='task' checked={filterBy === 'task'} />
+				 <label>Tarefa</label>
+			</div>
+ 	      
 			</form>
+ 
+
 		</div>
 	);
 }
 
 export default InptSearchFilter;
+//<input type='radio' onChange={handleChange} name='filterType' value='work' checked={filterBy === 'work'} /> 
+//<input type='radio' onChange={handleChange} name='filterType' value='task' checked={filterBy === 'task'} /> 		

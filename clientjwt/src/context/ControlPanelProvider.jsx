@@ -13,9 +13,9 @@ export default function ControlPanelProvider({ children }) {
 
   return (
     <ControlPanelContext.Provider value={{ setFilterBy, filterBy, workViews, addWorkView }}>
-      <div className="Control-panel-context">
+      <>
         { children }
-      </div>
+      </>
     </ControlPanelContext.Provider>
   );
 

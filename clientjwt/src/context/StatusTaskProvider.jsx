@@ -9,9 +9,9 @@ export default function StatusTaskProvider({ children }) {
 
   return (
     <StatusTaskContext.Provider value={{ statusTask, setStatusTask }}>
-      <div className="status-task-context">
+      <>
         { children }
-      </div>
+      </>
     </StatusTaskContext.Provider>
   );
 

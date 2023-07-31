@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { WorkContext } from '../context';
+import iconSave from '../assets/icons/save24.ico'
 
 const FormNewJob = () => {
 	const { addWork } = useContext(WorkContext);
@@ -21,6 +22,7 @@ const FormNewJob = () => {
 		addWork({ name: nameNewJob.value, desc:descNewJob.value})
 		nameNewJob.value = '';
 		descNewJob.value = '';
+		setIsValidDescrition(false);
 	}
 	
 	
@@ -28,23 +30,25 @@ const FormNewJob = () => {
 		<div className='form-new-job disabled' >
 			<form>
 				<label>
-					<span>Nome:</span>
-					<input type='text' name='nameNewJob' onChange={(event) => validateName(event.target)} />
+					 
+					<input type='text' name='nameNewJob' onChange={(event) => validateName(event.target)} placeholder="Nome" />
 				</label>
 				<label>
-					<span>Descricao:</span>
-					<input type='text' name='descNewJob' onChange={(event) => validateDescrition(event.target)} />
+					<input type='text' name='descNewJob' onChange={(event) => validateDescrition(event.target)} placeholder="Descricao" />
 				</label>
 				<label>
-					<span>Visibilidade:</span>
+					
 					<select name='visibilityNewJob'>
 						<option>Somente eu</option>
 						<option>Minha Rede</option>
 						<option>Todos</option>
 						<option>Apenas ...</option>
 					</select>
-				</label>			
-				<button disabled={ !isValidName || !isValidDescrition} onClick={(e) => addNewWork(e)} >Salvar</button>	
+				</label>	
+				 
+					<button className="btnSave" disabled={ !isValidName || !isValidDescrition} onClick={(e) => addNewWork(e)} >salvar</button>
+				 	
+					
 			</form>
 		</div>
 	);

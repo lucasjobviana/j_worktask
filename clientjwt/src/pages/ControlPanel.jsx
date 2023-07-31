@@ -8,7 +8,7 @@ import './ControlPanel.css'
 
 const ControlPanel = () => {	 
 	return (<div className='control-panel-container'>
-		Painel de Controle
+		<h1>Painel de Controle</h1>
 		<InptSearch />
 		<BtnNewJob />
 		<TblResults />

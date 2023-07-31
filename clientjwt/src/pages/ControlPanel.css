@@ -1,4 +1,12 @@
 .control-panel-container {
 	width: 100vw;
-	color:red;
+	height: 100%;
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+	background-color:gray;
+}
+
+button {
+	background-color: black;
 }

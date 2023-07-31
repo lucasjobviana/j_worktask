@@ -18,9 +18,9 @@ export default function WorkProvider({ children }) {
 
   return (
     <WorkContext.Provider value={{ works, setWorks, addWork }}>
-      <div className="work-context">
+      <>
         { children }
-      </div>
+      </>
     </WorkContext.Provider>
   );
 
