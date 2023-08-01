@@ -1,7 +1,8 @@
 import React, { useState, useContext } from 'react';
 import { WorkContext } from '../context';
 import iconSave from '../assets/icons/save24.ico'
-
+ 
+ 
 const FormNewJob = () => {
 	const { addWork } = useContext(WorkContext);
 	const [ isValidName, setIsValidName ] = useState(false);
@@ -19,7 +20,7 @@ const FormNewJob = () => {
 		event.preventDefault();
 		const { target: { form : { nameNewJob } }  } = event;
 		const { target: { form : { descNewJob } }  } = event; 
-		addWork({ name: nameNewJob.value, desc:descNewJob.value})
+		addWork({ name: nameNewJob.value, descrition:descNewJob.value})
 		nameNewJob.value = '';
 		descNewJob.value = '';
 		setIsValidDescrition(false);

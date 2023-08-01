@@ -19,7 +19,7 @@ const WorkView = ({work}) => {
 	
 	console.log(work)
 	console.log(tasks)
-	const tasksOfWork = tasks.filter((t)=>t.idWork === work.id);
+	const tasksOfWork = tasks.filter((t)=>(t.idWork === work.id && t.idParentTask ===null));
 	console.log(tasksOfWork)
 	console.log('fsdfasdfdsfdsfdsfds')
 	// const tasksElements = tasksOfWork.map((t) => <div >{t.name}</div>)

@@ -43,10 +43,16 @@
 	border: 1px solid white;
 }
 
-.task-views {}
+.task-views button {
+	cursor: pointer;
+}
 
 .span-name:hover+td+td+td+.span-descrition,
 .span-name:focus+td+td+td+.span-descrition,
 .span-name:active+td+td+td+.span-descrition {
 	display: inline-block;
+}
+
+.icon {
+	pointer-events: none;
 }

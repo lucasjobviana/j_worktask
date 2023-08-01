@@ -18,11 +18,13 @@ function App() {
 	const { statusTask, setStatusTask } = useContext(StatusTaskContext);
 	
 	const getWorksFromAPI = async (userId) => {
+		const token = 'tokenaleatorio';
 		try {
 			const user = { id:1};
-			const requestOptions = {method:'POST',headers:{
+			const requestOptions = {method:'GET',headers:{
+				'Authorization': `${token}`,
 				'Content-Type': 'application/json'
-			},body: JSON.stringify(user)}
+			}}
 			const response = await fetch('http://172.20.0.11:3000/works',requestOptions);
 			if (!response.ok) {
 			  throw new Error('Erro ao obter os dados da API.');
@@ -39,11 +41,17 @@ function App() {
 	}
 
 	const getTasksFromAPI = async (userId) => {
+		const token = 'tokenaleatorio';
 		try {
 			const user = { id:1};
-			const requestOptions = {method:'POST',headers:{
+			const requestOptions = {method:'GET',headers:{
+				'Authorization': `${token}`,
 				'Content-Type': 'application/json'
-			},body: JSON.stringify(user)}
+			}}
+			// const user = { id:1};
+			// const requestOptions = {method:'POST',headers:{
+			// 	'Content-Type': 'application/json'
+			// },body: JSON.stringify(user)}
 			const response = await fetch('http://172.20.0.11:3000/tasks',requestOptions);
 			if (!response.ok) {
 			  throw new Error('Erro ao obter os dados da API.');

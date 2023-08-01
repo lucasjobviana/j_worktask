@@ -2,11 +2,16 @@ const express = require('express');
 const connection = require('../db/connection');
 
 const router = express.Router();
+const invalidTokenMsg = 'Token inválido';
+const notFoundTokenMsg = 'Token não encontrado';
 
 const HTTP_STATUS_OK = 200;
+const HTTP_STATUS_SERVER_ERROR = 500;
 
-router.post('/works', async (req, res) => {
-    const user = { ...req.body };
+router.get('/works', async (req, res) => {
+    //const user = { ...req.body };
+    const header = { ...req.headers };
+    if (!header.authorization) return res.status(401).json({ message: notFoundTokenMsg });
 
     const [queryResponse] = await connection.execute(`
     SELECT 
@@ -22,7 +27,7 @@ router.post('/works', async (req, res) => {
     FROM 
         work w
     WHERE
-        w.id = ${user.id};
+        w.id_user = 1;
     `);//CALL getWorkStatisticsById(1);
 
     console.log(queryResponse)
@@ -37,26 +42,30 @@ router.post('/works', async (req, res) => {
     return res.status(HTTP_STATUS_OK).json(works);
 });
 
-// router.post('/tasks', async (req, res) => {
-//     const user = { ...req.body };
+router.post('/works', async (req, res) => {
+    const user = { ...req.body };
+    const sql = 'INSERT INTO  work(id_visibility,id_user,name,descrition) values(1,1,?,?)';
+    const values = [user.name, user.descrition];
+    console.log('post/works/user: ', user);
+    console.log('sql', sql, values)
 
-//     const [queryResponse] = await connection.execute(`
-//     select * from task t
-//     where t.id_work = ${user.id}
-//     `);//CALL getWorkStatisticsById(1);
+    // Executar a consulta usando o método execute
+    const status = await connection.execute(sql, values);
 
-//     console.log('Esssse eh do tasks')
-//     console.log(queryResponse)
-//     const works = queryResponse.map((work) => ({
-//         id: work.id,
-//         name: work.name,
-//         descrition: work.descrition,
-//         idWork: work.id_work,
-//         idParentTask: work.id_parentTask,
+    //const { affectedRows, insertId } = ResultSetHeader;
+    console.log(status[0])
+    const { insertId, affectedRows } = status[0];
+    console.log(insertId)
+    //console.log(affectedRows, insertId)
 
-//     }));
-//     return res.status(HTTP_STATUS_OK).json(works);
-// });
+    console.log(status)
+    if (affectedRows) return res.status(HTTP_STATUS_OK).json({ id: insertId });
+    return res.status(HTTP_STATUS_SERVER_ERROR).json({ msg: 'Não foi possível adicionar o trabalho, erro interno.' });
+
+
+});
+
+
 
 module.exports = router;
 

@@ -103,26 +103,21 @@ insert into work(id_visibility,id_user,name,descrition) values(1,1,'App de recei
 
 INSERT INTO task (name, id_work, id_assigned_user, descrition)
 VALUES ('Criar front-end da aplicação', 1, 1, 'Criar front-end da aplicação utilizando react.');
-
-INSERT INTO task (name, id_work, id_assigned_user, id_parentTask, descrition)
-VALUES ('Criar interface responsiva para o front-end', 1, 1, 1, 'Criar um layout responsivo para a aplicação utilizando css puro.');
 INSERT INTO task (name, id_work, id_assigned_user, descrition)
 VALUES ('Criar back-end da aplicação', 1, 1, 'Criar back-end da aplicação utilizando node-express.');
 INSERT INTO task (name, id_work, id_assigned_user, descrition)
 VALUES ('Criar testes unitários para a aplicação', 1, 1, 'Criar testes para a aplicação.');
 
--- Inserindo o trabalho "Landing Page Iphone"
+
 
 
 -- Inserindo tarefas relacionadas ao trabalho "Landing Page Iphone"
 INSERT INTO task (name, id_work, id_assigned_user, descrition)
 VALUES ('Definir layout da landing page', 2, 1, 'Definir o layout e a estrutura da landing page.');
 
-INSERT INTO task (name, id_work, id_assigned_user, id_parentTask, descrition)
-VALUES ('Criar seção de produtos', 2, 1, 4, 'Criar a seção de produtos para exibir os modelos de iPhone.');
 
-INSERT INTO task (name, id_work, id_assigned_user, id_parentTask, descrition)
-VALUES ('Adicionar animações', 2, 1, 5, 'Adicionar animações interativas para tornar a página mais atraente.');
+
+
 
 INSERT INTO task (name, id_work, id_assigned_user, descrition)
 VALUES ('Testar a página em dispositivos móveis', 2, 1, 'Realizar testes em diferentes dispositivos móveis para garantir a responsividade.');
@@ -138,26 +133,12 @@ VALUES ('Definir escopo do aplicativo', 3, 1, 'Definir os recursos e funcionalid
 INSERT INTO task (name, id_work, id_assigned_user, descrition)
 VALUES ('Criar a interface do aplicativo', 3, 1, 'Criar a interface do aplicativo utilizando ferramentas de design.');
 
-INSERT INTO task (name, id_work, id_assigned_user, id_parentTask, descrition)
-VALUES ('Implementar funcionalidade de busca de receitas', 3, 1, 9, 'Permitir que os usuários busquem receitas por ingredientes ou nome.');
 
-INSERT INTO task (name, id_work, id_assigned_user, id_parentTask, descrition)
-VALUES ('Adicionar seção de receitas populares', 3, 1, 10, 'Mostrar uma lista de receitas populares para os usuários.');
 
 INSERT INTO task (name, id_work, id_assigned_user, descrition)
 VALUES ('Implementar funcionalidade de salvar receitas', 3, 1, 'Permitir que os usuários salvem suas receitas favoritas.');
 
-INSERT INTO task (name, id_work, id_assigned_user, id_parentTask, descrition)
-VALUES ('Adicionar compartilhamento de receitas', 3, 1, 12, 'Adicionar opção para os usuários compartilharem receitas com amigos.');
 
-INSERT INTO task (name, id_work, id_assigned_user, id_parentTask, descrition)
-VALUES ('Testar o aplicativo em diferentes dispositivos', 3, 1, 13, 'Realizar testes em dispositivos móveis e tablets para garantir a compatibilidade.');
-
-INSERT INTO task (name, id_work, id_assigned_user, id_parentTask, descrition)
-VALUES ('Otimizar o desempenho do aplicativo', 3, 1, 14, 'Otimizar o carregamento e desempenho do aplicativo para uma experiência suave.');
-
-INSERT INTO task (name, id_work, id_assigned_user, id_parentTask, descrition)
-VALUES ('Realizar testes de usabilidade', 3, 1, 15, 'Conduzir testes de usabilidade para obter feedback dos usuários.');
 
 INSERT INTO task (name, id_work, id_assigned_user, descrition)
 VALUES ('Realizar ajustes com base no feedback', 3, 1, 'Fazer ajustes e melhorias com base no feedback dos usuários.');
@@ -204,6 +185,36 @@ insert into _statustask_(id_status,id_task) values(3,1);
 -- END$$
 -- DELIMITER ;
 
+
+
+INSERT INTO task (name, id_work, id_assigned_user, id_parentTask, descrition)
+VALUES ('Criar interface responsiva para o front-end', 1, 1, 1, 'Criar um layout responsivo para a aplicação utilizando css puro.');
+
+INSERT INTO task (name, id_work, id_assigned_user, id_parentTask, descrition)
+VALUES ('Criar seção de produtos', 2, 1, 4, 'Criar a seção de produtos para exibir os modelos de iPhone.');
+INSERT INTO task (name, id_work, id_assigned_user, id_parentTask, descrition)
+VALUES ('Adicionar animações', 2, 1, 5, 'Adicionar animações interativas para tornar a página mais atraente.');
+INSERT INTO task (name, id_work, id_assigned_user, id_parentTask, descrition)
+VALUES ('Implementar funcionalidade de busca de receitas', 3, 1, 9, 'Permitir que os usuários busquem receitas por ingredientes ou nome.');
+INSERT INTO task (name, id_work, id_assigned_user, id_parentTask, descrition)
+VALUES ('Adicionar seção de receitas populares', 3, 1, 10, 'Mostrar uma lista de receitas populares para os usuários.');
+INSERT INTO task (name, id_work, id_assigned_user, id_parentTask, descrition)
+VALUES ('Adicionar compartilhamento de receitas', 3, 1, 12, 'Adicionar opção para os usuários compartilharem receitas com amigos.');
+INSERT INTO task (name, id_work, id_assigned_user, id_parentTask, descrition)
+VALUES ('Adicionar compartilhamento de receitas', 3, 1, 12, 'Adicionar opção para os usuários compartilharem receitas com amigos.');
+INSERT INTO task (name, id_work, id_assigned_user, id_parentTask, descrition)
+VALUES ('Adicionar compartilhamento de receitas', 3, 1, 22, 'Adicionar opção para os usuários compartilharem receitas com amigos.');
+
+
+
+INSERT INTO task (name, id_work, id_assigned_user, id_parentTask, descrition)
+VALUES ('Testar o aplicativo em diferentes dispositivos', 3, 1, 13, 'Realizar testes em dispositivos móveis e tablets para garantir a compatibilidade.');
+
+INSERT INTO task (name, id_work, id_assigned_user, id_parentTask, descrition)
+VALUES ('Otimizar o desempenho do aplicativo', 3, 1, 14, 'Otimizar o carregamento e desempenho do aplicativo para uma experiência suave.');
+
+INSERT INTO task (name, id_work, id_assigned_user, id_parentTask, descrition)
+VALUES ('Realizar testes de usabilidade', 3, 1, 15, 'Conduzir testes de usabilidade para obter feedback dos usuários.');
 
 
 

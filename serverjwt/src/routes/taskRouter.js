@@ -2,16 +2,21 @@ const express = require('express');
 const connection = require('../db/connection');
 
 const router = express.Router();
+const invalidTokenMsg = 'Token inválido';
+const notFoundTokenMsg = 'Token não encontrado';
 
 const HTTP_STATUS_OK = 200;
 
 
-router.post('/tasks', async (req, res) => {
-    const user = { ...req.body };
+router.get('/tasks', async (req, res) => {
+    // const user = { ...req.body };
+    const header = { ...req.headers };
+    if (!header.authorization) return res.status(401).json({ message: notFoundTokenMsg });
 
     const [queryResponse] = await connection.execute(`
-    select * from task t
-    where t.id_work = ${user.id}
+    select t.id,t.name,t.descrition,t.id_parentTask,t.id_work  from task t
+    inner join work w on w.id = t.id_work
+where w.id_user =1 order by t.id
     `);//CALL getWorkStatisticsById(1);
 
     console.log('Esssse eh do tasks')
@@ -21,10 +26,32 @@ router.post('/tasks', async (req, res) => {
         name: work.name,
         descrition: work.descrition,
         idWork: work.id_work,
-        idParentTask: work.id_parentTask,
-
+        idParentTask: work.id_parentTask
     }));
     return res.status(HTTP_STATUS_OK).json(works);
+});
+
+router.post('/tasks', async (req, res) => {
+    const user = { ...req.body };
+    const sql = 'INSERT INTO  task(id_work,name,descrition,id_parentTask) values(?,?,?,?)';
+    const values = [user.idWork, user.name, user.descrition, user.idParentTask || ''];
+    console.log('post/tasks/user: ', user);
+    console.log('sql', sql, values)
+
+    // Executar a consulta usando o método execute
+    const status = await connection.execute(sql, values);
+
+    //const { affectedRows, insertId } = ResultSetHeader;
+    console.log(status[0])
+    const { insertId, affectedRows } = status[0];
+    console.log(insertId)
+    //console.log(affectedRows, insertId)
+
+    console.log(status)
+    if (affectedRows) return res.status(HTTP_STATUS_OK).json({ id: insertId });
+    return res.status(HTTP_STATUS_SERVER_ERROR).json({ msg: 'Não foi possível adicionar a tarefa, erro interno.' });
+
+
 });
 
 module.exports = router;
