@@ -3,12 +3,12 @@ import { TaskContext } from '../context';
 import TaskViews from './TaskViews'
 import iconeAdd from '../assets/icons/add24.ico'
 import iconDel from '../assets/icons/del24.ico'
-import iconCheck from '../assets/icons/check24.ico'
+import iconCheck from '../assets/icons/check24.ico' 
 import './TaskView.css'
 
 const TaskView = ({ task, left=0, tabs = [] }) => { 
   const { tasks } = useContext(TaskContext);
-  const subTasks = tasks.filter((t) => t.parentTask === task.id);
+  const subTasks = tasks.filter((t) => t.idParentTask === task.id);
   const subTaskElements =  <TaskViews taskViews={ subTasks } left={left+5} tabs={[...tabs,true]} /> 
   const tabElements =  tabs.map(()=> {return '   '}).join('')
 
@@ -19,7 +19,7 @@ const TaskView = ({ task, left=0, tabs = [] }) => {
       <td><img style={{background:'red'}} src={iconCheck}  /> </td>
       <td><img  src={iconeAdd}  /> </td>
       <td><img  src={iconDel}  /> </td>
-      <td className='span-descrition'>{task.desc}</td>
+      <td className='span-descrition'>{task.descrition}</td>
       
       
     </tr>

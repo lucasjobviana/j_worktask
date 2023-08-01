@@ -40,11 +40,11 @@ const TblResults = () => {
 			<tbody>
 			{
 				works.map((work,index)=>{ 
-					const totalTasks = Math.ceil(Math.random()*10);
-					const qtdCompleteTasks = Math.ceil(Math.random()*totalTasks)
+					//const totalTasks = Math.ceil(Math.random()*10);
+					//const qtdCompleteTasks = Math.ceil(Math.random()*totalTasks)
 					return <tr key={`work_${index}`} onClick={()=>showWorkDetails(work.id)} >
 					<td>{work.id}</td><td>{work.name}</td><td>{work.desc}</td>
-					<td>{totalTasks}</td><td>{qtdCompleteTasks}</td>
+					<td>{work.taskCount}</td><td>{work.finalyTasksCount}</td>
 					</tr>
 				})
 				

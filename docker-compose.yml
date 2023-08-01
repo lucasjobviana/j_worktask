@@ -27,6 +27,8 @@ services:
         ipv4_address: 172.20.0.10
     volumes:
       - ./clientjwt/src:/app/src
+    depends_on:
+      - backend
   database:
     image: mysql:8.0.29
     restart: always

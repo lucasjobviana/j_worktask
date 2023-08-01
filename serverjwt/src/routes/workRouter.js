@@ -5,7 +5,9 @@ const router = express.Router();
 
 const HTTP_STATUS_OK = 200;
 
-router.get('/works', async (req, res) => {
+router.post('/works', async (req, res) => {
+    const user = { ...req.body };
+
     const [queryResponse] = await connection.execute(`
     SELECT 
         w.id,
@@ -20,7 +22,7 @@ router.get('/works', async (req, res) => {
     FROM 
         work w
     WHERE
-        w.id = 1;
+        w.id = ${user.id};
     `);//CALL getWorkStatisticsById(1);
 
     console.log(queryResponse)
@@ -34,6 +36,27 @@ router.get('/works', async (req, res) => {
     }));
     return res.status(HTTP_STATUS_OK).json(works);
 });
+
+// router.post('/tasks', async (req, res) => {
+//     const user = { ...req.body };
+
+//     const [queryResponse] = await connection.execute(`
+//     select * from task t
+//     where t.id_work = ${user.id}
+//     `);//CALL getWorkStatisticsById(1);
+
+//     console.log('Esssse eh do tasks')
+//     console.log(queryResponse)
+//     const works = queryResponse.map((work) => ({
+//         id: work.id,
+//         name: work.name,
+//         descrition: work.descrition,
+//         idWork: work.id_work,
+//         idParentTask: work.id_parentTask,
+
+//     }));
+//     return res.status(HTTP_STATUS_OK).json(works);
+// });
 
 module.exports = router;
 

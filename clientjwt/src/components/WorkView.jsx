@@ -17,7 +17,11 @@ const WorkView = ({work}) => {
 		 divRef.current.focus();
 	},[]);	
 	
-	const tasksOfWork = tasks.filter((t)=>t.work === work.id);
+	console.log(work)
+	console.log(tasks)
+	const tasksOfWork = tasks.filter((t)=>t.idWork === work.id);
+	console.log(tasksOfWork)
+	console.log('fsdfasdfdsfdsfdsfds')
 	// const tasksElements = tasksOfWork.map((t) => <div >{t.name}</div>)
 	
 	return (
@@ -25,7 +29,7 @@ const WorkView = ({work}) => {
 			<WorkViewTopBar />
 			
 			<h2>{`${work.id} - ${work.name}`}</h2>
-			<h3> {work.desc}</h3>
+			<h3> {work.descrition}</h3>
 			
 			<div className='tableContainer'>
 			<table className='task-views'><TaskViews taskViews={ tasksOfWork } /></table>
