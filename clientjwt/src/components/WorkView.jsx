@@ -8,14 +8,17 @@ import iconEdit from '../assets/icons/edit24.ico'
 import {  TaskContext } from '../context'
 import TaskViews from './TaskViews'
 
-const WorkView = ({work}) => {
+const WorkView = ({work}) => { 
 	const divRef = useRef(null);
 	// const [ divWasCreated, setDivWasCreated] = useState(false);
 	const { tasks } = useContext(TaskContext);
 	
 	useEffect(() => {
+		//console.log('woooooooooooooooooook view');
 		 divRef.current.focus();
 	},[]);	
+
+	
 	
 	console.log(work)
 	console.log(tasks)
@@ -32,7 +35,7 @@ const WorkView = ({work}) => {
 			<h3> {work.descrition}</h3>
 			
 			<div className='tableContainer'>
-			<table className='task-views'><TaskViews taskViews={ tasksOfWork } /></table>
+			<table className='task-views'><tbody><TaskViews taskViews={ tasksOfWork } /></tbody></table>
 			</div>
 		</div>
 	);

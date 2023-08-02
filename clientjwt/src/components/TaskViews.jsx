@@ -2,7 +2,7 @@ import  React from 'react';
 import TaskView from './TaskView';
 import './BtnNewJob.css'
 
-//import { TaskContext } from '../context'
+//import { TaskContext } from '../context' 
 
 const TaskViews = ({taskViews,left = 0,tabs = []}) => {
 	//const { tasks } = useContext(TaskContext);console.log(taskViews)

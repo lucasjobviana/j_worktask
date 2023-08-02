@@ -6,23 +6,25 @@
 	text-align: center;
 	width: 100%;
 	display: none;
-	background-color: rgba(255, 255, 255)
+	background-color: rgba(255, 255, 255);
 }
 
 .work-views {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	/* background-color: blue; */
-	width: 100vw;
+	/* background-color: red; */
+
+
 }
 
 .work-view {
 	border: 1px solid white;
-	width: 80%;
 	margin-top: 1%;
 	text-align: justify;
 	padding: 1%;
+	width: 90vw;
+
 }
 
 .work-view h2 {
@@ -31,12 +33,14 @@
 
 .work-views tr td {
 	white-space: pre;
+	width: 100%;
 }
 
 .tableContainer {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+
 }
 
 .tableContainer table {
@@ -47,7 +51,7 @@
 	cursor: pointer;
 }
 
-.span-name:hover+td+td+td+.span-descrition,
+.span-name:hover+td+td+td+td+.span-descrition,
 .span-name:focus+td+td+td+.span-descrition,
 .span-name:active+td+td+td+.span-descrition {
 	display: inline-block;
@@ -55,4 +59,14 @@
 
 .icon {
 	pointer-events: none;
+}
+
+.td-editable {
+	color: white;
+	background-color: inherit;
+	border: 0px;
+}
+
+.disabled {
+	display: none;
 }

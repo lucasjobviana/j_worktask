@@ -1,22 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { TaskContext } from './';
-import addTaskAPI from '../api/taskAPI ';
+import { addTaskAPI, editTaskAPI} from '../api/taskAPI ';
 
 export default function TaskProvider({ children }) { 
   const [tasks, setTasks] = useState([]);
    
   const addTask = async (task) => { 
-    if(tasks.find((t) => t.name === task.name)) return false;
-    const taskIds = tasks.map((t) => Number(t.id));
-    const newId = Math.max(...taskIds) + 1;
-    //setTasks([ ...tasks, {  ...task } ]);//salvar no bd aqui
-    
-    
-
-
-    const {id} = await addTaskAPI({ id: newId, ...task });
+    if(tasks.find((t) => t.name === task.name && t.idParentTask === task.idParentTask)) return false;
+    const {id} = await addTaskAPI({ id: 0, ...task });
     if(id) {setTasks([ ...tasks, { id: id, ...task } ]);}
-   // setTasks([ ...tasks, { id: newId, ...task } ]);//salvar no bd aqui
+    return true
+  }
+
+  const editTask = async (task) => { 
+    if(tasks.find((t) => t.name === task.name && t.idParentTask === task.idParentTask)) return false;
+    const {id} = await editTaskAPI({ ...task });
+    const newTasks = tasks.map((t)=>{
+      if (t.id === task.id){
+        return task;
+      }
+      return t;
+    });
+    if(id == task.id) {setTasks(newTasks);}else{alert('efjklds');}
     return true
   }
 	
@@ -25,7 +30,7 @@ export default function TaskProvider({ children }) {
 	});  
 
   return (
-    <TaskContext.Provider value={{ tasks, setTasks, addTask }}>
+    <TaskContext.Provider value={{ tasks, setTasks, addTask, editTask }}>
       <>
         { children }
       </>
