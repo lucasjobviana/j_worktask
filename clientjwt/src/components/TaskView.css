@@ -1,35 +1,45 @@
-.span-descrition {
-	position: absolute;
-	z-index: 5;
-	top: 0px;
-	left: 0px;
-	text-align: center;
-	width: 100%;
-	display: none;
-	background-color: rgba(255, 255, 255);
-}
-
 .work-views {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	width: 100%;
+
 }
 
 .work-view {
 	text-align: justify;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	width: 99%;
-	border: 1px solid white;
-	border-radius: 5px;
-	background-color: rgb(0, 0, 0, 0.3);
+	/* display: flex; */
+	/* flex-direction: column; */
+	/* align-items: end; */
+	position: relative;
+	width: 97%;
+	/* border: 1px solid white; */
+	border-radius: 10px;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+
+	background-color: rgb(252, 252, 252);
+
+
 	margin-top: 5px;
 }
 
-.work-view h2 {
-	/* text-align: center; */
+.work-view>div {
+	/* display: flex; */
+	/* flex-direction: column; */
+	/* align-items: end; */
+
+}
+
+
+
+.work-view h2,
+h3 {
+	margin: 5px;
+}
+
+.work-view h3 {
+	width: 98%;
 }
 
 .work-views tr td {
@@ -37,22 +47,30 @@
 	width: 100%;
 }
 
+
+
 .tableContainer {
-	display: flex;
-	flex-direction: column;
+	/* display: flex; */
+	/* flex-direction: column; */
 	/* align-items: center; */
-	width: 98%;
+	/* width: 98%; */
 }
 
 .tableContainer table {
 	/* border: 2px solid gray; */
+
 }
 
 .task-views button {
 	cursor: pointer;
 }
 
-.span-name:hover+td+td+td+td+.span-descrition,
+.task-view {
+	/* position: relative; */
+
+}
+
+.span-name:hover+td+td+td+.span-descrition,
 .span-name:focus+td+td+td+.span-descrition,
 .span-name:active+td+td+td+.span-descrition {
 	display: inline-block;
@@ -76,4 +94,35 @@
 
 .disabled {
 	display: none;
+}
+
+input[type=checkbox] {
+	width: 35px;
+	height: 35px;
+	background-color: black;
+	position: relative;
+	top: 8px;
+}
+
+.span-descrition {
+
+	z-index: 5;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+
+
+
+
+	font-size: larger;
+
+
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+
+	display: none;
+	color: white;
+	background-color: rgb(0, 0, 0);
+
 }

@@ -261,3 +261,39 @@ h5,
 table {
   font-size: 1.2em;
 }
+
+/* Estilo da tabela */
+table {
+  width: 100%;
+  /* border-radius: 5px; */
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  text-align: left;
+  background-color: rgb(249, 109, 87);
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+/* Estilo do cabeçalho da tabela */
+th {
+  background-color: #f2f2f2;
+  padding: 0.5%;
+  border-bottom: 1px solid #ddd;
+
+}
+
+/* Estilo das células da tabela */
+td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Estilo das células da primeira coluna (opcional) */
+td:first-child {
+  font-weight: bold;
+}
+
+/* Estilo das células da última coluna (opcional) */
+td:last-child {
+  text-align: center;
+}

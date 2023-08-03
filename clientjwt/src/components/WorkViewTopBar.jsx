@@ -4,12 +4,17 @@ import iconeDel from '../assets/icons/del24.ico'
 import iconClose from '../assets/icons/close24.ico'
 import iconMin from '../assets/icons/min24.ico'
 import iconEdit from '../assets/icons/edit24.ico'
+ 
 
 const WorkViewTopBar = ({name}) => {
 	
 	const closeView = (event) => {
 		console.log('closeView')
 		console.log(event.target)			
+		event.target.parentNode.parentNode.style.display = 'none';
+		// event.target.parentNode.parentNode.remove();
+		// rmvWorkView()
+
 	}
 	
 	const minimizeView = (event) => {
@@ -34,12 +39,12 @@ const WorkViewTopBar = ({name}) => {
 	}
 	
 	return (
-		<button className='top-bar' onClick={toggleView} onDoubleClick={closeView}>
+		<button className='top-bar' onClick={toggleView}>
 			<img src={iconClose} onClick={closeView} />
-			<img src={iconMin} onClick={minimizeView} />
+			<img src={iconMin} onClick={minimizeView}  />
 			<img src={iconeDel} onClick={(event)=>deleteWork(event)} />
 			<img src={iconEdit} onClick={(event)=>editWork(event)} />	
-			<div className='icon'> <h4>{name}</h4></div>
+			<div className='icon' > <h4 >{name}</h4></div>
 			
 		</button>
 	);

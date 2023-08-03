@@ -1,22 +1,19 @@
 .work-view {
 	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: aqua;
 }
 
 .work-view table {
 	text-align: left;
 }
 
-table tr {}
-
-table td {}
-
-td {
-	min-width: 0px;
-}
-
 .topBarWorks {
 	position: relative;
-	background-color: red;
+	/* background-color: red; */
 	display: flex;
 	flex-direction: row-reverse;
 	border-radius: 5px;

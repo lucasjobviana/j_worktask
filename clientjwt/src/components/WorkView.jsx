@@ -30,7 +30,7 @@ const WorkView = ({work}) => {
 	return (
 		<div ref={divRef} tabIndex={0} className='work-view' id={`work-view${work.id}`} >
 			<WorkViewTopBar name={`${work.id} - ${work.name}`} />
-			<div style={{display:'block'}}>
+			<div >
 				<h2>{`${work.id} - ${work.name}`}</h2>
 				<h3> {work.descrition}</h3>
 				

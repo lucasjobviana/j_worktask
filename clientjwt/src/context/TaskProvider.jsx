@@ -13,7 +13,7 @@ export default function TaskProvider({ children }) {
   }
 
   const editTask = async (task) => { 
-    if(tasks.find((t) => t.name === task.name && t.idParentTask === task.idParentTask)) return false;
+    if(tasks.find((t) => t.name === task.name && t.idParentTask === task.idParentTask && t.checked === task.checked)) return false;
     const {id} = await editTaskAPI({ ...task });
     const newTasks = tasks.map((t)=>{
       if (t.id === task.id){

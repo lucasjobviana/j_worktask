@@ -27,6 +27,7 @@ const addTaskAPI = async (work) => {
 
 const editTaskAPI = async (work) => {
 	const token = 'tokenaleatorio';
+	console.log(work)
 		try {
 			const requestOptions = {
                 method:'PUT',
