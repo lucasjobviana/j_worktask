@@ -5,7 +5,7 @@ import iconClose from '../assets/icons/close24.ico'
 import iconMin from '../assets/icons/min24.ico'
 import iconEdit from '../assets/icons/edit24.ico'
 
-const WorkViewTopBar = (event) => {
+const WorkViewTopBar = ({name}) => {
 	
 	const closeView = (event) => {
 		console.log('closeView')
@@ -26,14 +26,22 @@ const WorkViewTopBar = (event) => {
 		console.log('deleteWork')
 		console.log(event.target)
 	}
+
+	const toggleView = ({target}) => {
+		console.log('toogle');
+		console.log(target);
+		target.nextSibling.style.display = target.nextSibling.style.display === 'block' ? 'none' : 'block';
+	}
 	
 	return (
-		<div className='top-bar'>
+		<button className='top-bar' onClick={toggleView} onDoubleClick={closeView}>
 			<img src={iconClose} onClick={closeView} />
 			<img src={iconMin} onClick={minimizeView} />
 			<img src={iconeDel} onClick={(event)=>deleteWork(event)} />
-			<img src={iconEdit} onClick={(event)=>editWork(event)} />
-		</div>
+			<img src={iconEdit} onClick={(event)=>editWork(event)} />	
+			<div className='icon'> <h4>{name}</h4></div>
+			
+		</button>
 	);
 }
 

@@ -36,12 +36,10 @@ const TblResults = () => {
 					<th>Tarefas</th>
 					<th>Finalizadas</th>
 				</tr>
-			</thead>
+			</thead> 
 			<tbody>
 			{
 				works.map((work,index)=>{ 
-					//const totalTasks = Math.ceil(Math.random()*10);
-					//const qtdCompleteTasks = Math.ceil(Math.random()*totalTasks)
 					return <tr key={`work_${index}`} onClick={()=>showWorkDetails(work.id)} >
 					<td>{work.id}</td><td>{work.name}</td><td>{work.desc}</td>
 					<td>{work.taskCount}</td><td>{work.finalyTasksCount}</td>

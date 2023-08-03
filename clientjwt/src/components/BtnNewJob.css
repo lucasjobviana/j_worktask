@@ -1,34 +1,35 @@
 .btn-new-job {
-	background-color: rgb(0,0,0,0.3);
+	background-color: rgb(0, 0, 0, 0.3);
 	width: 99%;
 	border: 1px solid white;
 	border-radius: 5px;
-	display:flex;
+	display: flex;
 	flex-direction: column;
-	align-items:center;
+	align-items: center;
 	padding-bottom: 5px;
 	padding-top: 5px;
-	color:red;
+	color: red;
 	margin-top: 5px;
 }
 
-.btn-new-job > button,input[type=text] {
+.btn-new-job>button,
+input[type=text] {
 	width: 98%;
 	height: 40px;
-	font-size: x-large;
+	/* font-size: x-large; */
 }
 
 .form-new-job select {
 	margin-top: 5px;
 	height: 46px;
-	font-size: x-large;
+	/* font-size: x-large; */
 }
 
 .form-new-job button {
 	margin-top: 5px;
 	height: 46px;
 	width: auto;
-	font-size: x-large;
+	/* font-size: x-large; */
 }
 
 
@@ -38,12 +39,12 @@
 }
 
 .form-new-job form {
-	font-size: x-large;
+	/* font-size: x-large; */
 	display: flex;
 	flex-direction: row;
 	align-items: start;
 	width: 100%;
-	
+
 }
 
 
@@ -60,8 +61,6 @@
 }
 
 .disabled {
-	display:none;
+	display: none;
 
 }
-
-
