@@ -54,6 +54,7 @@ CREATE TABLE work (
 CREATE TABLE task (
 	id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
+    checked INT DEFAULT 3,
     id_work INT NOT NULL,
     id_Assigned_user INT NULL,
     id_parentTask INT NULL DEFAULT NULL,
@@ -160,8 +161,6 @@ VALUES ('Manter e atualizar o aplicativo', 3, 1, 'Realizar manutenção contínu
 
 
 
-insert into _statustask_(id_status,id_task) values(3,1);
-
 
 -- DROP PROCEDURE IF EXISTS getWorkStatisticsById;
 --  DELIMITER //
@@ -213,12 +212,17 @@ VALUES ('Testar o aplicativo em diferentes dispositivos', 3, 1, 13, 'Realizar te
 INSERT INTO task (name, id_work, id_assigned_user, id_parentTask, descrition)
 VALUES ('Otimizar o desempenho do aplicativo', 3, 1, 14, 'Otimizar o carregamento e desempenho do aplicativo para uma experiência suave.');
 
-INSERT INTO task (name, id_work, id_assigned_user, id_parentTask, descrition)
-VALUES ('Realizar testes de usabilidade', 3, 1, 15, 'Conduzir testes de usabilidade para obter feedback dos usuários.');
+INSERT INTO task (name, id_work, id_assigned_user, id_parentTask, descrition,checked)
+VALUES ('Realizar testes de usabilidade', 3, 1, 15, 'Conduzir testes de usabilidade para obter feedback dos usuários.',4);
 
 
 
-
+INSERT INTO _statustask_ (id_status,id_task) values(1,26);
+INSERT INTO _statustask_ (id_status,id_task) values(2,26);
+INSERT INTO _statustask_ (id_status,id_task) values(3,26);
+INSERT INTO _statustask_ (id_status,id_task) values(4,26);
+INSERT INTO _statustask_ (id_status,id_task) values(5,26) ;
+insert into _statustask_(id_status,id_task) values(3,1);
 
 
 

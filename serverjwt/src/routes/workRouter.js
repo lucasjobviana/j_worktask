@@ -20,10 +20,8 @@ router.get('/works', async (req, res) => {
         w.descrition,
         (SELECT COUNT(*) FROM task WHERE id_work = w.id) AS task_count,
         (SELECT COUNT(*) FROM task 
-    INNER JOIN 
-        _statustask_ st ON st.id_task = task.id
     WHERE 
-        id_work = w.id) AS finaly_task_count
+        id_work = w.id and checked=4) AS finaly_task_count
     FROM 
         work w
     WHERE

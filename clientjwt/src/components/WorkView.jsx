@@ -30,11 +30,15 @@ const WorkView = ({work}) => {
 	return (
 		<div ref={divRef} tabIndex={0} className='work-view' id={`work-view${work.id}`} >
 			<WorkViewTopBar name={`${work.id} - ${work.name}`} />
-			<div >
-				 <input disabled={true}  className='td-editable'  type="text" value={`${work.id} - ${work.name}`} />
+			<div className='work-content'>
+				<div>
+				<input disabled={true}  className='td-editable'  type="text" value={`${work.id} - ${work.name}`} />
 				
 				  
-				 <input disabled={true}  className='td-editable' value={work.descrition} type="text" /> 
+				<input disabled={true}  className='td-editable' value={work.descrition} type="text" /> 
+
+				</div>
+				
 				
 				<div className='tableContainer'>
 				<table className='task-views'><tbody><TaskViews taskViews={ tasksOfWork } /></tbody></table>

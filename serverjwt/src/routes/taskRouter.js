@@ -14,9 +14,22 @@ router.get('/tasks', async (req, res) => {
     if (!header.authorization) return res.status(401).json({ message: notFoundTokenMsg });
 
     const [queryResponse] = await connection.execute(`
-    select t.id,t.name,t.descrition,t.id_parentTask,t.id_work  from task t
-    inner join work w on w.id = t.id_work
-where w.id_user =1 order by t.id
+    SELECT
+    t.id,
+    t.name,
+    t.descrition,
+    t.id_parentTask,
+    t.id_work,
+    t.checked
+FROM
+    task t
+INNER JOIN
+    work w ON w.id = t.id_work
+
+WHERE
+    w.id_user = 1
+ORDER BY
+    t.id;
     `);//CALL getWorkStatisticsById(1);
 
     console.log('Esssse eh do tasks')
@@ -26,7 +39,8 @@ where w.id_user =1 order by t.id
         name: work.name,
         descrition: work.descrition,
         idWork: work.id_work,
-        idParentTask: work.id_parentTask
+        idParentTask: work.id_parentTask,
+        checked: work.checked
     }));
     return res.status(HTTP_STATUS_OK).json(works);
 });
@@ -54,8 +68,8 @@ router.post('/tasks', async (req, res) => {
 
 router.put('/tasks', async (req, res) => {
     const user = { ...req.body };
-    const sql = 'UPDATE task t SET t.name = ?,t.id_work = ?,t.id_Assigned_user = ?,t.id_parentTask = ?,descrition = ? WHERE t.id = ?;';
-    const values = [user.name, user.idWork, 1, user.idParentTask || null, user.descrition, user.id];
+    const sql = 'UPDATE task t SET t.name = ?,t.id_work = ?,t.id_Assigned_user = ?,t.id_parentTask = ?,descrition = ?,checked=?  WHERE t.id = ?;';
+    const values = [user.name, user.idWork, 1, user.idParentTask || null, user.descrition, user.checked, user.id];
     console.log('PUT   /tasks/user: ', user);
     console.log('sql', sql, values)
 
@@ -74,3 +88,16 @@ router.put('/tasks', async (req, res) => {
 });
 
 module.exports = router;
+//     select t.id,t.name,t.descrition,t.id_parentTask,t.id_work  from task t
+//     inner join work w on w.id = t.id_work
+// where w.id_user =1 order by t.id
+
+// LEFT JOIN (
+//     SELECT
+//         id_task,
+//         MAX(id_status) AS id_status
+//     FROM
+//         _statustask_
+//     GROUP BY
+//         id_task
+// ) max_status ON t.id = max_status.id_task

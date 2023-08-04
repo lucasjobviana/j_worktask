@@ -7,14 +7,6 @@ import iconCheck from '../assets/icons/check24.ico'
 import iconClose from '../assets/icons/arrowUp24.ico' 
 import iconEdit from '../assets/icons/edit24.ico' 
 import iconSave from '../assets/icons/save24.ico' 
- 
- 
- 
-
-
- 
-
-
 import './TaskView.css'
 
 const TaskView = ({ task, left=0, tabs = [] }) => { 
@@ -25,7 +17,7 @@ const TaskView = ({ task, left=0, tabs = [] }) => {
   const [ editBtnIcon, setEditBtnIcon ] = useState(true);
   const subTasks = tasks.filter((t) => t.idParentTask === task.id);
   const subTaskElements =  <TaskViews taskViews={ subTasks } left={left+5} tabs={[...tabs,true]} /> 
-  const tabElements =  tabs.map(()=> {return '   '}).join('')
+  const tabElements =  tabs.map(()=> {return  '   '}).join();
 
   const addNewTask = (event,id,idWork) => {
     event.preventDefault();
@@ -51,7 +43,7 @@ const TaskView = ({ task, left=0, tabs = [] }) => {
   }
 
   const handleChangeCheck = ({target}) => {
-    const checked = target.checked === true ? 4: 3;
+    const checked = target.checked === true ? 4: 3; 
     // alert(checked)
     setCheck(checked)
   }
@@ -59,12 +51,11 @@ const TaskView = ({ task, left=0, tabs = [] }) => {
   return (
   <>
     <tr className={`task-view`}   id={`task-view-${task.id}`}>
-      <td className='span-name'>{` ${tabElements}` } <input type="checkbox" checked={Number(check) ===4 } onChange={handleChangeCheck} />  
+      <td>{`${tabElements}` }<input type="checkbox" checked={Number(check) ===4 } onChange={handleChangeCheck} /> </td>
+      <td className='span-name'>  
         <input disabled={editBtnIcon}  className='td-editable' onInput={handleChangeName}   type='text' value={`${nameText}`} onChange={handleChangeName} />  
       </td>
-      {/* <td> 
-        <input type="checkbox" checked={Number(check) ===4 } onChange={handleChangeCheck} /> 
-      </td> */}
+      
       <td> 
         <button  onClick={(e) => addNewTask(e,task.id,task.idWork)} >
           <img className='icon' src={iconeAdd}  />
@@ -80,24 +71,24 @@ const TaskView = ({ task, left=0, tabs = [] }) => {
            <img className='icon' src={editBtnIcon?iconEdit:iconClose} alt="a" />  
            </button>
       </td> 
-      <td className='span-descrition'>{task.descrition}</td>
+      <div className='span-descrition'>{task.descrition}</div>
     </tr>
 
-    <tr className='disabled' >
-      <td  >{` ${tabElements}  ` } 
+    <tr className='qualquer disabled' >
+      <td></td>
+      <td  >
       <input className='td-editable' type='text' onInput={handleChangeDescrition} value={`${descritionText}`} />  
 
        
        
       </td>
       
-      <td></td>
-      <td></td>
+     
       <td>
         <button onClick={(e)=>editTaskHandle(e,task,`task-view-${task.id}`)}>
           <img className='icon' src={iconSave}  />
         </button>
-      </td><td></td>
+      </td>
     </tr>
 
     {subTaskElements}
