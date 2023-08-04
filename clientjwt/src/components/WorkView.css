@@ -7,8 +7,14 @@
 	background-color: aqua;
 }
 
+.work-view div {
+	width: 100%;
+
+
+}
+
 .work-view table {
-	text-align: left;
+	/* text-align: left; */
 }
 
 .topBarWorks {

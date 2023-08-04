@@ -4,6 +4,7 @@ import iconeDel from '../assets/icons/del24.ico'
 import iconClose from '../assets/icons/close24.ico'
 import iconMin from '../assets/icons/min24.ico'
 import iconEdit from '../assets/icons/edit24.ico'
+import iconSave from '../assets/icons/save24.ico'
  
 
 const WorkViewTopBar = ({name}) => {
@@ -44,6 +45,7 @@ const WorkViewTopBar = ({name}) => {
 			<img src={iconMin} onClick={minimizeView}  />
 			<img src={iconeDel} onClick={(event)=>deleteWork(event)} />
 			<img src={iconEdit} onClick={(event)=>editWork(event)} />	
+			<img src={iconSave} onClick={()=>alert('salvar')} />	
 			<div className='icon' > <h4 >{name}</h4></div>
 			
 		</button>

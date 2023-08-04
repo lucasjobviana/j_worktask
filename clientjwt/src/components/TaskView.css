@@ -87,7 +87,7 @@ h3 {
 }
 
 .td-editable:disabled {
-	color: white;
+	color: rgb(2, 2, 2);
 	background-color: inherit;
 	border: 0px;
 }

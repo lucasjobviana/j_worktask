@@ -269,23 +269,25 @@ table {
   border-collapse: collapse;
   font-family: Arial, sans-serif;
   text-align: left;
-  background-color: rgb(249, 109, 87);
+  background-color: rgb(236, 152, 139, 0.5);
+
   margin-bottom: 10px;
   margin-top: 10px;
 }
 
 /* Estilo do cabeçalho da tabela */
 th {
-  background-color: #f2f2f2;
+  background-color: #000000;
   padding: 0.5%;
-  border-bottom: 1px solid #ddd;
+  color: white;
+  border-bottom: 1px solid #000000;
 
 }
 
 /* Estilo das células da tabela */
 td {
   padding: 8px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #000000;
 }
 
 /* Estilo das células da primeira coluna (opcional) */

@@ -84,20 +84,20 @@ const TaskView = ({ task, left=0, tabs = [] }) => {
     </tr>
 
     <tr className='disabled' >
-      <td>{` ${tabElements}  ` } 
+      <td  >{` ${tabElements}  ` } 
       <input className='td-editable' type='text' onInput={handleChangeDescrition} value={`${descritionText}`} />  
 
        
        
       </td>
-      <td></td>
+      
       <td></td>
       <td></td>
       <td>
         <button onClick={(e)=>editTaskHandle(e,task,`task-view-${task.id}`)}>
           <img className='icon' src={iconSave}  />
         </button>
-      </td>
+      </td><td></td>
     </tr>
 
     {subTaskElements}
