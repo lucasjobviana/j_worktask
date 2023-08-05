@@ -6,6 +6,11 @@ import './BtnNewJob.css'
 
 const TaskViews = ({taskViews,left = 0,tabs = []}) => {
 	//const { tasks } = useContext(TaskContext);console.log(taskViews)
+	// const newTarefa = document.querySelector('value="Nova Tarefa"');
+	//useEffect(()=>{
+
+	
+	
 	
 	return (
 		<>

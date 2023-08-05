@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useRef, useEffect } from 'react';
 import { TaskContext } from '../context';
 import TaskViews from './TaskViews'
 import iconeAdd from '../assets/icons/add24.ico'
@@ -10,18 +10,28 @@ import iconSave from '../assets/icons/save24.ico'
 import './TaskView.css'
 
 const TaskView = ({ task, left=0, tabs = [] }) => { 
-  const { tasks, addTask, editTask } = useContext(TaskContext);
+  const { tasks, addTask, editTask, rmvTask } = useContext(TaskContext);
   const [ nameText, setNameText ] = useState(task.name);
   const [ descritionText, setDescritionText ] = useState(task.descrition);
-  const [ check, setCheck ] = useState(task.checked);
+  const [ check, setCheck ] = useState(task.checked||3);
   const [ editBtnIcon, setEditBtnIcon ] = useState(true);
   const subTasks = tasks.filter((t) => t.idParentTask === task.id);
   const subTaskElements =  <TaskViews taskViews={ subTasks } left={left+5} tabs={[...tabs,true]} /> 
-  const tabElements =  tabs.map(()=> {return  '   '}).join();
+  const tabElements =  tabs.map(()=> {return  '   '}).join('');
+  const newTarefaElement = useRef(null);
+
+
+  const handleRmvTask = async (event,id) => {
+    event.preventDefault();
+    console.log('hadleRemove',id)
+    const a = await rmvTask(id);
+    console.log(a)
+
+  }
 
   const addNewTask = (event,id,idWork) => {
     event.preventDefault();
-    addTask({ name: 'novaTarefa', descrition:'novaDescrition', idParentTask:id, idWork:idWork});
+    addTask({ name: 'Nova Tarefa', descrition:'Nova Descrição', idParentTask:id, idWork:idWork});
   }
 
   const editTaskHandle = async (event, {id,idWork,idParentTask },idElement) => {
@@ -47,13 +57,19 @@ const TaskView = ({ task, left=0, tabs = [] }) => {
     // alert(checked)
     setCheck(checked)
   }
+
+  useEffect(() => {
+    if (newTarefaElement.current.value === 'Nova Tarefa') {
+      newTarefaElement.current.parentElement.style.opacity = '0.7';
+    } 
+  }, []);
   
   return (
   <>
     <tr className={`task-view`}   id={`task-view-${task.id}`}>
       <td>{`${tabElements}` }<input type="checkbox" checked={Number(check) ===4 } onChange={handleChangeCheck} /> </td>
       <td className='span-name'>  
-        <input disabled={editBtnIcon}  className='td-editable' onInput={handleChangeName}   type='text' value={`${nameText}`} onChange={handleChangeName} />  
+        <input ref={newTarefaElement}  disabled={editBtnIcon}  className='td-editable' onInput={handleChangeName}   type='text' value={`${nameText}`} onChange={handleChangeName} />  
       </td>
       
       <td> 
@@ -62,7 +78,7 @@ const TaskView = ({ task, left=0, tabs = [] }) => {
         </button> 
       </td>
       <td>
-        <button>
+        <button onClick={(event)=>handleRmvTask(event,task.id)}>
           <img  className='icon' src={iconDel}  />
         </button>
       </td>  

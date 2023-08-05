@@ -30,7 +30,7 @@ const TblResults = () => {
 			
 		}
 		// workViewElement.style.display = 'flex';
-		document.querySelector(`#work-view${work}`).focus() ;
+		document.querySelector(`#work-view${work}`).focus() ; 
 		// event.target.parentNode.parentNode.style.display = 'none';
 		// !addWorkView(work) && document.querySelector(`#work-view${work}`).focus();
 	}

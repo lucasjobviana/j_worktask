@@ -84,11 +84,11 @@ function App() {
 		console.log('App.useEffect([])][tasks]: ', tasks);
 		console.log('App.useEffect([])][tasks]: ', statusTask);
 		seila(userId);
-		
-		//setWorks(mockWorks);
-		// setTasks(mockTasks);
-		// setStatusTask(mockStatusTask);
 	},[]);
+
+ 
+
+ 
 	
   return (
     <>

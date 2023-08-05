@@ -87,6 +87,30 @@ router.put('/tasks', async (req, res) => {
     return res.status(HTTP_STATUS_SERVER_ERROR).json({ msg: 'Não foi possível editar a tarefa, erro interno.' });
 });
 
+
+router.delete('/tasks', async (req, res) => {
+    const user = { ...req.body };
+    const sql = 'delete from task where id = ?;';
+    //delete FROM task where id = 11
+    const values = [user.id];
+    console.log('delete   /tasks/user: ', user);
+    console.log('sql', sql, values)
+
+    // Executar a consulta usando o método execute
+    const status = await connection.execute(sql, values);
+
+    //const { affectedRows, insertId } = ResultSetHeader;
+    console.log(status[0])
+    const { affectedRows } = status[0];
+    console.log(affectedRows)
+    //console.log(affectedRows, insertId)
+
+    console.log('meuidquevouretornar: ', affectedRows)
+    if (affectedRows) return res.status(HTTP_STATUS_OK).json({ affectedRows });
+    return res.status(HTTP_STATUS_SERVER_ERROR).json({ msg: 'Não foi possível editar a tarefa, erro interno.' });
+});
+
+
 module.exports = router;
 //     select t.id,t.name,t.descrition,t.id_parentTask,t.id_work  from task t
 //     inner join work w on w.id = t.id_work

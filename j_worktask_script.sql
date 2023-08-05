@@ -8,8 +8,7 @@ CREATE TABLE status_task (
 	id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
     descrition VARCHAR(150) NULL,
-    CONSTRAINT pk_id_status_task PRIMARY KEY (id),
-    CONSTRAINT uq_name_status_task UNIQUE (name)
+    CONSTRAINT pk_id_status_task PRIMARY KEY (id)
 );
 
 CREATE TABLE status_work (
@@ -62,16 +61,17 @@ CREATE TABLE task (
     CONSTRAINT pk_id_task PRIMARY KEY (id),
     CONSTRAINT fk_task_work FOREIGN KEY (id_work) REFERENCES work(id), 
     CONSTRAINT fk_task_user FOREIGN KEY (id_assigned_user) REFERENCES user(id),
-    CONSTRAINT fk_task_parentTask FOREIGN KEY (id_parentTask) REFERENCES task(id)
+    CONSTRAINT fk_task_parentTask FOREIGN KEY (id_parentTask) REFERENCES task(id) ON DELETE SET NULL
+     
 );
 
-CREATE TABLE _statustask_ (
-	id_status INT NOT NULL,
-    id_task INT NOT NULL,
-    date_time DATETIME NULL,
-    CONSTRAINT fk_statustask_status FOREIGN KEY (id_status) REFERENCES status_task(id), 
-    CONSTRAINT fk_statustask_task FOREIGN KEY (id_task) REFERENCES task(id)
-);
+-- CREATE TABLE _statustask_ (
+-- 	id_status INT NOT NULL,
+--     id_task INT NOT NULL,
+--     date_time DATETIME NULL,
+--     CONSTRAINT fk_statustask_status FOREIGN KEY (id_status) REFERENCES status_task(id), 
+--     CONSTRAINT fk_statustask_task FOREIGN KEY (id_task) REFERENCES task(id)
+-- );
 
 CREATE TABLE _statuswork_ (
 	id_status INT NOT NULL,
@@ -86,11 +86,11 @@ insert into status_work(name) values('Contrução');
 insert into status_work(name) values('Iniciado');
 insert into status_work(name) values('Pausado');
 insert into status_work(name) values('Finalizado');
-insert into status_task(name) values('Criada');
-insert into status_task(name) values('Atribuida');
-insert into status_task(name) values('Finalizada');
-insert into status_task(name) values('Aprovada');
-insert into status_task(name) values('Rejeitada');
+-- insert into status_task(name) values('Criada');
+-- insert into status_task(name) values('Atribuida');
+-- insert into status_task(name) values('Finalizada');
+-- insert into status_task(name) values('Aprovada');
+-- insert into status_task(name) values('Rejeitada');
 insert into user(name,nickname,email,password_hash) values('DEMO','DEMO', 'DEMO@gmail.com', 'DEMO');
 insert into visibility(name,descrition) values('Privado','Somente o criador podera ver.');
 insert into visibility(name,descrition) values('Publico','Todos poderão ver.');
@@ -217,12 +217,12 @@ VALUES ('Realizar testes de usabilidade', 3, 1, 15, 'Conduzir testes de usabilid
 
 
 
-INSERT INTO _statustask_ (id_status,id_task) values(1,26);
-INSERT INTO _statustask_ (id_status,id_task) values(2,26);
-INSERT INTO _statustask_ (id_status,id_task) values(3,26);
-INSERT INTO _statustask_ (id_status,id_task) values(4,26);
-INSERT INTO _statustask_ (id_status,id_task) values(5,26) ;
-insert into _statustask_(id_status,id_task) values(3,1);
+-- INSERT INTO _statustask_ (id_status,id_task) values(1,26);
+-- INSERT INTO _statustask_ (id_status,id_task) values(2,26);
+-- INSERT INTO _statustask_ (id_status,id_task) values(3,26);
+-- INSERT INTO _statustask_ (id_status,id_task) values(4,26);
+-- INSERT INTO _statustask_ (id_status,id_task) values(5,26) ;
+-- insert into _statustask_(id_status,id_task) values(3,1);
 
 
 
