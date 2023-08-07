@@ -12,6 +12,6 @@ app.use(express.json());
 app.use(cors());
 app.use(workRouter);
 app.use(taskRouter);
-app.get('/', (req, res) => res.status(200).json({ message: 'Hello World Again!' }));
+app.get('/', (req, res) => res.status(200).json({ message: 'Resposta da rota /.' }));
 module.exports = app;
 
