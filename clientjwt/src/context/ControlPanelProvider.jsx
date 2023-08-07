@@ -11,8 +11,15 @@ export default function ControlPanelProvider({ children }) {
     return true
   }
 
+  const rmvWorkView = (workView) => {
+    // if(workViews.find((w) => w === workView)) return false;
+    const newWorkViewList = workViews.filter((w)=>{ w !== workView});
+    setWorkViews([newWorkViewList ]);
+    return true
+  }
+
   return (
-    <ControlPanelContext.Provider value={{ setFilterBy, filterBy, workViews, addWorkView }}>
+    <ControlPanelContext.Provider value={{ setFilterBy, filterBy, workViews, addWorkView, rmvWorkView }}>
       <>
         { children }
       </>

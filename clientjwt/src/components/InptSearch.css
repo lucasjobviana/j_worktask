@@ -1,24 +1,25 @@
 .inpt-search {
-	background-color: rgb(0,0,0,0.3);
+	/* background-color: rgb(0, 0, 0, 0.3); */
 	width: 99%;
 	border: 1px solid white;
 	border-radius: 5px;
-	display:flex;
+	display: flex;
 	flex-direction: column;
-	align-items:center;
+	align-items: center;
 	padding-bottom: 5px;
 }
 
-.inpt-search > button,input[type=text] {
+.inpt-search>button,
+input[type=text] {
 	width: 98%;
 	height: 40px;
-	margin-top:5px;
-	font-size: x-large;
-	
+	margin-top: 5px;
+	/* font-size: x-large; */
+
 }
 
 .inpt-search form {
-	font-size: x-large;
+	/* font-size: x-large; */
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -26,14 +27,14 @@
 }
 
 .inpt-search form div {
-	display:flex;
+	display: flex;
 	flex-direction: row-reverse;
-	justify-content: space-between;	
-	width:200px;
-	font-size: 40px;
+	justify-content: space-between;
+	width: 200px;
+	/* font-size: 40px; */
 }
 
 input[type=radio] {
-    width: 50px;
-    height: 50px;
+	width: 50px;
+	height: 50px;
 }

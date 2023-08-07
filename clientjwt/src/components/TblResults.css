@@ -1,9 +1,11 @@
 .tbl-results {
-	position: relative;
+	/* position: relative; */
 }
 
 .tbl-results tr {
-	margin-top: 5px;
+	/* margin-top: 5px; */
 }
 
-
+.tbl-results {
+	background-color: white;
+}

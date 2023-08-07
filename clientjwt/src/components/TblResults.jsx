@@ -6,11 +6,12 @@ import './TblResults.css'
 // import iconeMenu from '../assets/icons/menu24.ico'
 // import tasks from '../../tests/mocks/tasks'
 import { ControlPanelContext } from '../context'
-import { WorkContext } from '../context'
+import { WorkContext, TaskContext } from '../context'
 
 const TblResults = () => {
 	const {  addWorkView, workViews } = useContext(ControlPanelContext);
 	const { works } = useContext(WorkContext);
+	const { tasks } = useContext(TaskContext);
 	console.log(workViews)
 	// const toggleSearch = ({target}) => {
 	// 	target.nextSibling.classList.toggle('disabled');	
@@ -22,7 +23,16 @@ const TblResults = () => {
 	// }
 
 	const showWorkDetails = (work) => {
-		!addWorkView(work) && document.querySelector(`#work-view${work}`).focus();
+		if(!addWorkView(work)){
+			let workViewElement = document.querySelector(`#work-view${work}`);
+			workViewElement.style.display = 'flex';
+			// event.target.parentNode.parentNode.style.display = 'none';
+			
+		}
+		// workViewElement.style.display = 'flex';
+		document.querySelector(`#work-view${work}`).focus() ; 
+		// event.target.parentNode.parentNode.style.display = 'none';
+		// !addWorkView(work) && document.querySelector(`#work-view${work}`).focus();
 	}
 	
 	return (
@@ -36,15 +46,26 @@ const TblResults = () => {
 					<th>Tarefas</th>
 					<th>Finalizadas</th>
 				</tr>
-			</thead>
+			</thead> 
 			<tbody>
 			{
 				works.map((work,index)=>{ 
-					const totalTasks = Math.ceil(Math.random()*10);
-					const qtdCompleteTasks = Math.ceil(Math.random()*totalTasks)
 					return <tr key={`work_${index}`} onClick={()=>showWorkDetails(work.id)} >
 					<td>{work.id}</td><td>{work.name}</td><td>{work.desc}</td>
-					<td>{totalTasks}</td><td>{qtdCompleteTasks}</td>
+					<td>{
+							tasks.reduce((cont, w) =>{
+								if(w.idWork == work.id){cont++;}console.log('meu checked',w.checked);return cont;
+							}
+							
+							,0)
+						}</td><td>
+						{
+							tasks.reduce((cont, w) =>{
+								if(w.checked == 4 && w.idWork == work.id){cont++;}console.log('meu checked',w.checked);return cont;
+							}
+							
+							,0)
+						}</td>
 					</tr>
 				})
 				

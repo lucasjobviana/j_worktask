@@ -6,18 +6,23 @@ import WorkProvider from './context/WorkProvider'
 import TaskProvider from './context/TaskProvider'
 import StatusTaskProvider from './context/StatusTaskProvider'
 import StatusWorkProvider from './context/StatusWorkProvider'
+import ControlPanelProvider from './context/ControlPanelProvider'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<BrowserRouter>
-		<WorkProvider>
+	<ControlPanelProvider>
 		<TaskProvider>
+		<WorkProvider>
+		
 		<StatusTaskProvider>
 		<StatusWorkProvider>
 			<App />
 		</StatusWorkProvider>
 		</StatusTaskProvider>
-		</TaskProvider>
+		
 		</WorkProvider>
+		</TaskProvider>
+		</ControlPanelProvider>
   </BrowserRouter>,
 )
