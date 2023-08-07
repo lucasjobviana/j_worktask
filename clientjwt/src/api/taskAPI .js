@@ -81,4 +81,28 @@ const rmvTaskAPI = async (id) => {
 		  }
 }
 
-export { addTaskAPI, editTaskAPI, rmvTaskAPI };
+const getTasksAPI = async (userId) => {
+	const token = 'tokenaleatorio';
+	try {
+		const user = { id:1};
+		const requestOptions = {method:'GET',headers:{
+			'Authorization': `${token}`,
+			'Content-Type': 'application/json'
+		}}
+
+		const response = await fetch('http://172.20.0.11:3000/tasks',requestOptions);
+		if (!response.ok) {
+		  throw new Error('Erro ao obter os dados da API.');
+		}
+	
+		const data = await response.json();
+		console.log('Dados recebidos:', data);
+		return data; 
+	  } catch (error) {
+		console.error('Erro durante a requisição:', error);
+		console.log(error);
+		return null;
+	  }
+}
+
+export { addTaskAPI, editTaskAPI, rmvTaskAPI, getTasksAPI };

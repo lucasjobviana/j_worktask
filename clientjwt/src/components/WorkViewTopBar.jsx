@@ -22,7 +22,6 @@ const WorkViewTopBar = ({name,id}) => {
 		console.log(event.target)			
 	}
 	
-	
 	const deleteWork = async (event) => {
 		event.preventDefault();
 		await rmvWork(id);

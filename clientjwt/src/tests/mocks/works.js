@@ -51,4 +51,8 @@ const works = [
   },
 ];
 
-export default works;
+const getWorksAPI = () => {
+  return Promise.resolve(works);
+}
+
+export { works, getWorksAPI };
