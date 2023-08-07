@@ -63,6 +63,28 @@ router.post('/works', async (req, res) => {
 
 });
 
+router.delete('/works', async (req, res) => {
+    const user = { ...req.body };
+    const sql = 'delete from work where id = ?;';
+    //delete FROM task where id = 11
+    const values = [user.id];
+    console.log('delete   /works/user: ', user);
+    console.log('sql', sql, values)
+
+    // Executar a consulta usando o método execute
+    const status = await connection.execute(sql, values);
+
+    //const { affectedRows, insertId } = ResultSetHeader;
+    console.log(status[0])
+    const { affectedRows } = status[0];
+    console.log(affectedRows)
+    //console.log(affectedRows, insertId)
+
+    console.log('meustatus : ', affectedRows)
+    if (affectedRows) return res.status(HTTP_STATUS_OK).json({ affectedRows });
+    return res.status(HTTP_STATUS_SERVER_ERROR).json({ msg: 'Não foi possível excluir a work, erro interno.' });
+});
+
 
 
 module.exports = router;

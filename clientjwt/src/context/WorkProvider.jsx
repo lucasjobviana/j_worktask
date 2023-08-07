@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { WorkContext } from './';
-import addWorkAPI from '../api/workAPI';
+import {addWorkAPI,rmvWorkAPI} from '../api/workAPI';
 
 export default function WorkProvider({ children }) {
   const [works, setWorks] = useState([]);
@@ -14,13 +14,32 @@ export default function WorkProvider({ children }) {
     //setWorks([ ...works, { id: newId, ...work } ]);//salvar no bd aqui
     return true
   }
+
+  const rmvWork = async (id) => { 
+    if(!works.find((t) => t.id == id)) return false;
+    const {affectedRows} = await rmvWorkAPI(id);//fdsahfdjkshfdskafdskjfhadskjfhkjsd
+    const newWorks = works.filter((t)=>t.id !== id);
+    console.log(newWorks)
+    if(affectedRows){ 
+      console.log('if affectrow=',affectedRows);
+      const newTasks = tasks.filter((t)=> t.idWork !== id);
+      
+      setWorks(newWorks);
+      setTasks(newTasks);workViews
+      
+    }
+    else{console.log('ekse');}
+
+	//alert('achei nova tarefa');
+    return true
+  }
 	
 	useEffect(()=>{
 		console.log('WorkProvide.useEffect(null): ',works)
 	});  
 
   return (
-    <WorkContext.Provider value={{ works, setWorks, addWork }}>
+    <WorkContext.Provider value={{ works, setWorks, addWork, rmvWork }}>
       <>
         { children }
       </>

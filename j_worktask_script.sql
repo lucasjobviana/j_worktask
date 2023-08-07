@@ -59,8 +59,8 @@ CREATE TABLE task (
     id_parentTask INT NULL DEFAULT NULL,
     descrition varchar(300) NULL,
     CONSTRAINT pk_id_task PRIMARY KEY (id),
-    CONSTRAINT fk_task_work FOREIGN KEY (id_work) REFERENCES work(id), 
-    CONSTRAINT fk_task_user FOREIGN KEY (id_assigned_user) REFERENCES user(id),
+    CONSTRAINT fk_task_work FOREIGN KEY (id_work) REFERENCES work(id) ON DELETE CASCADE,
+    CONSTRAINT fk_task_user FOREIGN KEY (id_assigned_user) REFERENCES user(id) ON DELETE CASCADE,
     CONSTRAINT fk_task_parentTask FOREIGN KEY (id_parentTask) REFERENCES task(id) ON DELETE SET NULL
      
 );
@@ -78,7 +78,7 @@ CREATE TABLE _statuswork_ (
     id_work INT NOT NULL,
     date_time DATETIME NULL,
     CONSTRAINT fk_statuswork_status FOREIGN KEY (id_status) REFERENCES status_work(id), 
-    CONSTRAINT fk_statuswork_work FOREIGN KEY (id_work) REFERENCES work(id)
+    CONSTRAINT fk_statuswork_work FOREIGN KEY (id_work) REFERENCES work(id) ON DELETE CASCADE,
 );
 
 

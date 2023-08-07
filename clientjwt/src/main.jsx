@@ -10,14 +10,16 @@ import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<BrowserRouter>
-		<WorkProvider>
 		<TaskProvider>
+		<WorkProvider>
+		
 		<StatusTaskProvider>
 		<StatusWorkProvider>
 			<App />
 		</StatusWorkProvider>
 		</StatusTaskProvider>
-		</TaskProvider>
+		
 		</WorkProvider>
+		</TaskProvider>
   </BrowserRouter>,
 )

@@ -17,7 +17,8 @@ export default function TaskProvider({ children }) {
   const rmvTask = async (id) => { 
     if(!tasks.find((t) => t.id == id)) return false;
     const {affectedRows} = await rmvTaskAPI(id);//fdsahfdjkshfdskafdskjfhadskjfhkjsd
-   // if(affectedRows) {setTasks([ ...tasks, { id: id, ...task } ]);}
+    const newTasks = tasks.filter((t)=>t.id !== id);
+    if(affectedRows) setTasks(newTasks);
 
 	//alert('achei nova tarefa');
     return true

@@ -29,7 +29,7 @@ const WorkView = ({work}) => {
 	
 	return (
 		<div ref={divRef} tabIndex={0} className='work-view' id={`work-view${work.id}`} >
-			<WorkViewTopBar name={`${work.id} - ${work.name}`} />
+			<WorkViewTopBar name={work.name} id={work.id}  />
 			<div className='work-content'>
 				<div>
 				<input disabled={true}  className='td-editable'  type="text" value={`${work.id} - ${work.name}`} />
