@@ -38,8 +38,9 @@ const WorkViewTopBar = ({name,id}) => {
 		event.preventDefault();
 		const a = await rmvWork(id);//
 		window.location.reload();
-		console.log(a,works);
+		console.log(a,works); 
 
+		
 		
 	}
 
