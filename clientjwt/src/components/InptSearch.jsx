@@ -15,8 +15,7 @@ const InptSearch = () => {
 	
 	const handleClick = ({target}) => {
 		//const filterTypeElement = target.parentNode.querySelector('input[name="filterType"]:checked');
-		
-		console.log(target,filterBy)
+		//console.log(target,filterBy)
 	}
 	
 	return (

@@ -30,8 +30,7 @@ const FormNewJob = () => {
 	return (
 		<div className='form-new-job disabled' >
 			<form>
-				<label>
-					 
+				<label>	 
 					<input type='text' name='nameNewJob' onChange={(event) => validateName(event.target)} placeholder="Nome" />
 				</label>
 				<label>

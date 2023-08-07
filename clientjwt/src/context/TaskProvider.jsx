@@ -8,19 +8,15 @@ export default function TaskProvider({ children }) {
   const addTask = async (task) => { 
     if(tasks.find((t) => t.name === 'semNadaDeResticao')) return false;
     const {id} = await addTaskAPI({ id: 0, ...task });
-    if(id) {setTasks([ ...tasks, { id: id, ...task } ]);}
-
-	//alert('achei nova tarefa');
+    if(id) setTasks([ ...tasks, { id: id, ...task } ]);
     return true
   }
 
   const rmvTask = async (id) => { 
     if(!tasks.find((t) => t.id == id)) return false;
-    const {affectedRows} = await rmvTaskAPI(id);//fdsahfdjkshfdskafdskjfhadskjfhkjsd
+    const { affectedRows } = await rmvTaskAPI(id);
     const newTasks = tasks.filter((t)=>t.id !== id);
     if(affectedRows) setTasks(newTasks);
-
-	//alert('achei nova tarefa');
     return true
   }
 
@@ -33,29 +29,9 @@ export default function TaskProvider({ children }) {
       }
       return t;
     });
-    if(id == task.id) {setTasks(newTasks);}else{alert('efjklds');}
+    if(id == task.id) setTasks(newTasks);
     return true
   }
-
-
-
-
-
-
-    
-	// 	console.log('TaskProvider.useEffect(atualizei tasks): ',tasks);
-  //   const newTarefaElements = document.querySelectorAll('input[value="Nova Tarefa"]');
-    
-  //   const newTarefaElement = newTarefaElements&& newTarefaElements.length > 0 ? newTarefaElements[0] : null;
-  //   // newTarefaElement.focus();
-  //   if (newTarefaElement) {
-  //     console.log(newTarefaElement)
-  //     newTarefaElement.focus();
-  //   } else {
-  //     console.log('Elemento não encontrado ou não há elementos com value="Nova Tarefa".');
-  //   }
-
-	// },[tasks]);  
 
   return (
     <TaskContext.Provider value={{ tasks, setTasks, addTask, editTask, rmvTask }}>
@@ -64,5 +40,4 @@ export default function TaskProvider({ children }) {
       </>
     </TaskContext.Provider>
   );
-
 }

@@ -22,12 +22,8 @@ const InptSearchFilter = () => {
 			</div>
  	      
 			</form>
- 
-
 		</div>
 	);
 }
 
-export default InptSearchFilter;
-//<input type='radio' onChange={handleChange} name='filterType' value='work' checked={filterBy === 'work'} /> 
-//<input type='radio' onChange={handleChange} name='filterType' value='task' checked={filterBy === 'task'} /> 		
+export default InptSearchFilter;		

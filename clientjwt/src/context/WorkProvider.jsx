@@ -3,12 +3,10 @@ import { WorkContext,ControlPanelContext, TaskContext } from './';
 import {addWorkAPI,rmvWorkAPI} from '../api/workAPI';
 
 export default function WorkProvider({ children }) {
-  const [works, setWorks] = useState([]);
-  const {rmvWorkView} = useContext(ControlPanelContext);
-  // const { tasks, addTask, editTask, rmvTask } = useContext(TaskContext);
-   
+  const [ works, setWorks ] = useState([]);
+  const { rmvWorkView } = useContext(ControlPanelContext);
+  const { tasks } = useContext(TaskContext)
   // const [ tasks, setTasks ] = useContext(TaskContext);
-  const { tasks, setTasks } = useContext(TaskContext)
   //const { works, setWorks } = useContext(WorkContext)
   
   const addWork = async (work) => {
@@ -23,21 +21,15 @@ export default function WorkProvider({ children }) {
 
   const rmvWork = async (id) => { 
     if(!works.find((t) => t.id == id)) return false;
-    const {affectedRows} = await rmvWorkAPI(id);//fdsahfdjkshfdskafdskjfhadskjfhkjsd
-    const newWorks = works.filter((t)=>t.id !== id);
-    console.log(newWorks)
+    const {affectedRows} = await rmvWorkAPI(id);
+    // const newWorks = works.filter((t)=>t.id !== id);
+
     if(affectedRows){ 
-      console.log('if affectrow=',affectedRows);
       const newTasks = tasks.filter((t)=> t.idWork !== id);
-      
       //setWorks(newWorks);
       //setTasks(newTasks);
       rmvWorkView(id);
-      
     }
-    else{console.log('ekse');}
-
-	//alert('achei nova tarefa');
     return true
   }
 	

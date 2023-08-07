@@ -14,5 +14,4 @@ export default function StatusTaskProvider({ children }) {
       </>
     </StatusWorkContext.Provider>
   );
-
 }

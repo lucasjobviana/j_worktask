@@ -3,7 +3,6 @@ import { TaskContext } from '../context';
 import TaskViews from './TaskViews'
 import iconeAdd from '../assets/icons/add24.ico'
 import iconDel from '../assets/icons/del24.ico'
-import iconCheck from '../assets/icons/check24.ico' 
 import iconClose from '../assets/icons/arrowUp24.ico' 
 import iconEdit from '../assets/icons/edit24.ico' 
 import iconSave from '../assets/icons/save24.ico' 
@@ -23,10 +22,7 @@ const TaskView = ({ task, left=0, tabs = [] }) => {
 
   const handleRmvTask = async (event,id) => {
     event.preventDefault();
-    console.log('hadleRemove',id)
-    const a = await rmvTask(id);
-    console.log(a)
-
+    await rmvTask(id);
   }
 
   const addNewTask = (event,id,idWork) => {
@@ -54,7 +50,6 @@ const TaskView = ({ task, left=0, tabs = [] }) => {
 
   const handleChangeCheck = ({target}) => {
     const checked = target.checked === true ? 4: 3; 
-    // alert(checked)
     setCheck(checked)
   }
 
@@ -91,15 +86,11 @@ const TaskView = ({ task, left=0, tabs = [] }) => {
     </tr>
 
     <tr className='qualquer disabled' >
-      <td></td>
-      <td  >
-      <input className='td-editable' type='text' onInput={handleChangeDescrition} value={`${descritionText}`} />  
-
-       
-       
+      <td>
       </td>
-      
-     
+      <td>
+        <input className='td-editable' type='text' onInput={handleChangeDescrition} value={`${descritionText}`} />  
+      </td>
       <td>
         <button onClick={(e)=>editTaskHandle(e,task,`task-view-${task.id}`)}>
           <img className='icon' src={iconSave}  />
