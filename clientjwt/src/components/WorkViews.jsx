@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext,useEffect } from 'react';
 // import FormNewJob from './FormNewJob';
 import WorkView from './WorkView';
 import './BtnNewJob.css'
@@ -8,11 +8,15 @@ import { ControlPanelContext, WorkContext } from '../context'
 const WorkViews = () => {
 	const { workViews } = useContext(ControlPanelContext);
 	const { works } = useContext(WorkContext);
+
+	useEffect(()=>{
+		console.log(':::::',workViews)
+	},[workViews]);
 	
 	return (
 		<div className='work-views'>
 		{
-			workViews.map((w,index)=> <WorkView key={`Work_view${index}`} work={works.find((work) => work.id == w)} /> )
+			workViews.map((w,index)=> <WorkView key={`Work_view${index}`} work={works.find((work) => work.id == w)||0} />)
 		}
 		</div>
 	);

@@ -1,9 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { WorkContext } from './';
+import React, { useState, useEffect, useContext } from 'react';
+import { WorkContext,ControlPanelContext, TaskContext } from './';
 import {addWorkAPI,rmvWorkAPI} from '../api/workAPI';
 
 export default function WorkProvider({ children }) {
   const [works, setWorks] = useState([]);
+  const {rmvWorkView} = useContext(ControlPanelContext);
+  // const { tasks, addTask, editTask, rmvTask } = useContext(TaskContext);
+   
+  // const [ tasks, setTasks ] = useContext(TaskContext);
+  const { tasks, setTasks } = useContext(TaskContext)
+  //const { works, setWorks } = useContext(WorkContext)
   
   const addWork = async (work) => {
     if(works.find((w) => w.name === work.name)) return false;
@@ -24,8 +30,9 @@ export default function WorkProvider({ children }) {
       console.log('if affectrow=',affectedRows);
       const newTasks = tasks.filter((t)=> t.idWork !== id);
       
-      setWorks(newWorks);
-      setTasks(newTasks);workViews
+      //setWorks(newWorks);
+      //setTasks(newTasks);
+      rmvWorkView(id);
       
     }
     else{console.log('ekse');}

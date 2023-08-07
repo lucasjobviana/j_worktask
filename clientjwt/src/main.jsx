@@ -6,10 +6,12 @@ import WorkProvider from './context/WorkProvider'
 import TaskProvider from './context/TaskProvider'
 import StatusTaskProvider from './context/StatusTaskProvider'
 import StatusWorkProvider from './context/StatusWorkProvider'
+import ControlPanelProvider from './context/ControlPanelProvider'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<BrowserRouter>
+	<ControlPanelProvider>
 		<TaskProvider>
 		<WorkProvider>
 		
@@ -21,5 +23,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 		
 		</WorkProvider>
 		</TaskProvider>
+		</ControlPanelProvider>
   </BrowserRouter>,
 )

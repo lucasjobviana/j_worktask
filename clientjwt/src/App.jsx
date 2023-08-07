@@ -8,13 +8,15 @@ import ControlPanel from './pages/ControlPanel'
 import mockWorks from '../tests/mocks/works'
 import mockTasks from '../tests/mocks/tasks'
 import mockStatusTask from '../tests/mocks/statusTask'
-import { WorkContext, TaskContext, StatusTaskContext } from './context'
+import { WorkContext, TaskContext, StatusTaskContext, ControlPanelContext } from './context'
+ 
 import './App.css'
  
 
 function App() {
 	const { tasks, setTasks } = useContext(TaskContext);
 	const { works, setWorks } = useContext(WorkContext);
+	const { workViews } = useContext(ControlPanelContext);
 	const { statusTask, setStatusTask } = useContext(StatusTaskContext);
 	
 	const getWorksFromAPI = async (userId) => {
@@ -84,7 +86,7 @@ function App() {
 		console.log('App.useEffect([])][tasks]: ', tasks);
 		console.log('App.useEffect([])][tasks]: ', statusTask);
 		seila(userId);
-	},[]);
+	},[workViews]);
 
  
 
@@ -93,9 +95,9 @@ function App() {
   return (
     <>
 	<Switch>
-	<ControlPanelProvider>
+	
 		<Route exact path='/' component={ControlPanel} ></Route>
-	</ControlPanelProvider>
+	
 	</Switch>
     </>
   )

@@ -48,7 +48,7 @@ ORDER BY
 router.post('/tasks', async (req, res) => {
     const user = { ...req.body };
     const sql = 'INSERT INTO  task(id_work,name,descrition,id_parentTask) values(?,?,?,?)';
-    const values = [user.idWork, user.name, user.descrition, user.idParentTask || ''];
+    const values = [user.idWork, user.name, user.descrition, user.idParentTask || null];
     console.log('post/tasks/user: ', user);
     console.log('sql', sql, values)
 

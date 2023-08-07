@@ -8,7 +8,7 @@ import iconEdit from '../assets/icons/edit24.ico'
 import {  TaskContext } from '../context'
 import TaskViews from './TaskViews'
 
-const WorkView = ({work}) => { 
+const WorkView = ({work}) => {  
 	const divRef = useRef(null);
 	// const [ divWasCreated, setDivWasCreated] = useState(false);
 	const { tasks } = useContext(TaskContext);
