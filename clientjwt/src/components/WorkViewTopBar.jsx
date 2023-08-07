@@ -37,11 +37,11 @@ const WorkViewTopBar = ({name,id}) => {
 		console.log('deleteWork')
 		event.preventDefault();
 		const a = await rmvWork(id);//
-		window.location.reload();
-		console.log(a,works); 
+		//window.location.reload();
+		//console.log(a,works); 
 
 		
-		
+
 	}
 
 	const addNewTask = (event,id,idWork) => {
