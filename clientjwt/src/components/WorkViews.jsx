@@ -1,17 +1,11 @@
-import React, { useContext,useEffect } from 'react';
-// import FormNewJob from './FormNewJob';
+import React, { useContext } from 'react';
 import WorkView from './WorkView';
 import './BtnNewJob.css'
-// import iconeAdd from '../assets/icons/add24.ico'
 import { ControlPanelContext, WorkContext } from '../context'
 
 const WorkViews = () => {
 	const { workViews } = useContext(ControlPanelContext);
 	const { works } = useContext(WorkContext);
-
-	useEffect(()=>{
-		console.log(':::::',workViews)
-	},[workViews]);
 	
 	return (
 		<div className='work-views'>
@@ -21,5 +15,5 @@ const WorkViews = () => {
 		</div>
 	);
 }
-//work={{ works.find((work) => work.id == w)}}
+
 export default WorkViews;

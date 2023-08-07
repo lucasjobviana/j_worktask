@@ -11,10 +11,9 @@ export default function ControlPanelProvider({ children }) {
     return true
   }
 
-  const rmvWorkView = (workView) => {
-    // if(workViews.find((w) => w === workView)) return false;
+  const rmvWorkView = (workView) => {// if(workViews.find((w) => w === workView)) return false;//para validar
     const newWorkViewList = workViews.filter((w)=>{ w !== workView});
-    setWorkViews([newWorkViewList ]);
+    setWorkViews(newWorkViewList);
     return true
   }
 
