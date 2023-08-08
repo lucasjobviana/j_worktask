@@ -5,8 +5,12 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: rgb(119, 120, 117);
+	background-color: rgb(28, 26, 26);
 	padding-bottom: 5%;
+}
+
+.control-panel-container>h1 {
+	color: white;
 }
 
 button {
