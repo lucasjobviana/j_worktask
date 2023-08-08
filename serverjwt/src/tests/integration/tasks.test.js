@@ -9,8 +9,8 @@ const { json } = require('express');
 chai.use(chaiHttp);
 const { expect } = chai;
 
-describe('Usando o método GET em /tasks', function () {
-    describe('Testando o método GET em /tasks', function () {
+describe('Testando as rotas em /tasks:', function () {
+    describe('Testando o método GET:', function () {
         beforeEach(function () {
             sinon.stub(connection, 'execute').resolves([tasksDBFormat]);
           });
@@ -19,7 +19,7 @@ describe('Usando o método GET em /tasks', function () {
         sinon.restore();
         });
     
-        it('Verifica se o banco de dados foi consultado se token for passado corretamente.', async function () {
+        it('Verifica se o banco de dados foi consultado caso o token passado seja válido.', async function () {
             const response = await chai
             .request(app) 
             .get('/tasks')
@@ -27,14 +27,14 @@ describe('Usando o método GET em /tasks', function () {
             expect(connection.execute.calledOnce).to.be.equal(true);
         });
     
-        it('Verifica se o banco de dados não foi consultado se token não for passado corretamente.', async function () {
+        it('Verifica se o banco de dados não foi consultado caso o token passado seja inválido.', async function () {
             const response = await chai
             .request(app) 
             .get('/tasks')
             expect(connection.execute.calledOnce).not.to.be.equal(true);
         });
     
-        it('Retorna a lista completa de tasks se  o token for passado corretamente.', async function () {
+        it('Retorna a lista completa de tasks caso o token passado seja válido.', async function () {
             const response = await chai
             .request(app) 
             .get('/tasks')
@@ -43,7 +43,7 @@ describe('Usando o método GET em /tasks', function () {
             expect(response.body).to.be.deep.equal(tasks);
         });
     
-        it('Retorna um erro se o token for passado incoretamente.', async function () {
+        it('Retorna um erro caso o token passado seja inválido.', async function () {
             const response = await chai
             .request(app) 
             .get('/tasks')

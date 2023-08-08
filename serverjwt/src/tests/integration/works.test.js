@@ -23,8 +23,8 @@ const selectQuery = `
         w.id_user = 1;
     `
 
-describe('Testando as rotas em /works', function () {
-    describe('Testando o método GET em /works', function () {
+describe('Testando as rotas em /works:', function () {
+    describe('Testando o método GET:', function () {
         beforeEach(function () {
             sinon.stub(connection, 'execute').resolves([worksDBFormat]);
             });
@@ -33,7 +33,7 @@ describe('Testando as rotas em /works', function () {
             sinon.restore();
         });
 
-        it('Verifica se o banco de dados foi consultado se token for passado corretamente.', async function () {
+        it('Verifica se o banco de dados foi consultado caso o token passado seja válido.', async function () {
             const response = await chai
             .request(app) 
             .get('/works')
@@ -41,14 +41,14 @@ describe('Testando as rotas em /works', function () {
             expect(connection.execute.calledOnce).to.be.equal(true);
         });
 
-        it('Verifica se o banco de dados não foi consultado se token não for passado corretamente.', async function () {
+        it('Verifica se o banco de dados não foi consultado caso o token passado seja inválido.', async function () {
             const response = await chai
             .request(app) 
             .get('/works')
             expect(connection.execute.calledOnce).not.to.be.equal(true);
         });
 
-        it('Retorna a lista completa de trabalhos se  o token for passado corretamente.', async function () {
+        it('Retorna a lista completa de trabalhos caso o token passado seja válido.', async function () {
             const response = await chai
             .request(app) 
             .get('/works')
@@ -57,7 +57,7 @@ describe('Testando as rotas em /works', function () {
             expect(response.body).to.be.deep.equal(works);
         });
 
-        it('Retorna um erro se o token for passado incoretamente.', async function () {
+        it('Retorna um erro caso o token passado seja inválido.', async function () {
             const response = await chai
             .request(app) 
             .get('/works')
