@@ -37,6 +37,8 @@ function TaskView({ task, left = 0, tabs = [] }) {
 
   const toogleEditable = (id) => {
     const trElement = document.getElementById(id);
+    const spanNameElement = trElement?.children[1].children[0];
+    spanNameElement?.classList.toggle('behide');
     trElement?.nextElementSibling?.classList.toggle('disabled');
     setEditBtnIcon(!editBtnIcon);
   };
@@ -72,10 +74,9 @@ function TaskView({ task, left = 0, tabs = [] }) {
         <td>
           {`${tabElements}` }
           <input type="checkbox" checked={Number(check) === 4} onChange={handleChangeCheck} />
-          {' '}
-
         </td>
         <td className="span-name">
+          <button className="btn-cover" type="button" onClick={() => toogleEditable(`task-view-${task.id}`)} />
           <input ref={newTarefaElement} disabled={editBtnIcon} className="td-editable" onInput={handleChangeName} type="text" value={`${nameText}`} onChange={handleChangeName} />
         </td>
 

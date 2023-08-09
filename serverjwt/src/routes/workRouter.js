@@ -1,6 +1,7 @@
 const express = require('express');
 const connection = require('../db/connection');
 
+
 const router = express.Router();
 const invalidTokenMsg = 'Token inválido';
 const notFoundTokenMsg = 'Token não encontrado';
@@ -46,6 +47,17 @@ router.post('/works', async (req, res) => {
 
     if (affectedRows) return res.status(HTTP_STATUS_OK).json({ id: insertId });
     return res.status(HTTP_STATUS_SERVER_ERROR).json({ msg: 'Não foi possível adicionar o trabalho, erro interno.' });
+});
+
+router.put('/works', async (req, res) => {
+    const user = { ...req.body };
+    const sql = 'UPDATE work w SET w.name = ?, w.descrition = ? WHERE w.id = ?;';
+    const values = [user.name, user.descrition, user.id];
+    const status = await connection.execute(sql, values);
+    const { insertId, affectedRows } = status[0];
+
+    if (affectedRows) return res.status(HTTP_STATUS_OK).json({ id: user.id });
+    return res.status(HTTP_STATUS_SERVER_ERROR).json({ msg: 'Não foi possível editar a tarefa, erro interno.' });
 });
 
 router.delete('/works', async (req, res) => {
