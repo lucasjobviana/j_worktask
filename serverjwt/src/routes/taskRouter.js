@@ -4,7 +4,7 @@ const router = express.Router();
 const invalidTokenMsg = 'Token inválido';
 const notFoundTokenMsg = 'Token não encontrado';
 
-const HTTP_STATUS_OK = 200;
+const HTTP_STATUS_OK = 200; 
 
 router.get('/tasks', async (req, res) => {
     const header = { ...req.headers };
@@ -61,7 +61,6 @@ router.put('/tasks', async (req, res) => {
     if (affectedRows) return res.status(HTTP_STATUS_OK).json({ id: user.id });
     return res.status(HTTP_STATUS_SERVER_ERROR).json({ msg: 'Não foi possível editar a tarefa, erro interno.' });
 });
-
 
 router.delete('/tasks', async (req, res) => {
     const user = { ...req.body };
