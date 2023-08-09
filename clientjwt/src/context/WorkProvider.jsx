@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { WorkContext, ControlPanelContext, TaskContext } from '.';
-import { addWorkAPI, rmvWorkAPI } from '../api/workAPI';
+import { addWorkAPI, rmvWorkAPI, editWorkAPI } from '../api/workAPI';
 
 export default function WorkProvider({ children }) {
   const [works, setWorks] = useState([]);
@@ -33,13 +33,26 @@ export default function WorkProvider({ children }) {
     return true;
   };
 
+  const editWork = async (work) => {
+    // if (tasks.find((t) => t.name === task.name && t.idParentTask === task.idParentTask && t.checked === task.checked)) return false;
+    const { id } = await editWorkAPI({ ...work });
+    const newWorks = works.map((t) => {
+      if (t.id === work.id) {
+        return work;
+      }
+      return t;
+    });
+    if (id == work.id) setWorks(newWorks);
+    return true;
+  };
+
   useEffect(() => {
     console.log('WorkProvide.useEffect(null): ', works);
   });
 
   return (
     <WorkContext.Provider value={{
-      works, setWorks, addWork, rmvWork,
+      works, setWorks, addWork, rmvWork, editWork,
     }}
     >
       { children }

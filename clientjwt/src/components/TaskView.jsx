@@ -73,11 +73,11 @@ function TaskView({ task, left = 0, tabs = [] }) {
       <tr className="task-view" id={`task-view-${task.id}`}>
         <td>
           {`${tabElements}` }
-          <input type="checkbox" checked={Number(check) === 4} onChange={handleChangeCheck} />
+          <input name="isChecked" type="checkbox" checked={Number(check) === 4} onChange={handleChangeCheck} />
         </td>
         <td className="span-name">
           <button className="btn-cover" type="button" onClick={() => toogleEditable(`task-view-${task.id}`)} />
-          <input ref={newTarefaElement} disabled={editBtnIcon} className="td-editable" onInput={handleChangeName} type="text" value={`${nameText}`} onChange={handleChangeName} />
+          <input name="name" ref={newTarefaElement} disabled={editBtnIcon} className="td-editable" onInput={handleChangeName} type="text" value={`${nameText}`} onChange={handleChangeName} />
         </td>
 
         <td>
@@ -99,9 +99,13 @@ function TaskView({ task, left = 0, tabs = [] }) {
       </tr>
 
       <tr className="qualquer disabled">
-        <td />
         <td>
-          <input className="td-editable" type="text" onInput={handleChangeDescrition} value={`${descritionText}`} />
+          {' '}
+          <input type="hidden" name="id" value={task.id} />
+          {' '}
+        </td>
+        <td>
+          <input name="descrition" className="td-editable" type="text" onInput={handleChangeDescrition} value={`${descritionText}`} />
         </td>
         <td>
           <button type="button" onClick={(e) => editTaskHandle(e, task, `task-view-${task.id}`)}>

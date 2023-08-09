@@ -25,6 +25,34 @@ const addWorkAPI = async (work) => {
   }
 };
 
+const editWorkAPI = async (work) => {
+  const token = 'tokenaleatorio';
+  console.log(work);
+  try {
+    const requestOptions = {
+      method: 'PUT',
+      headers: {
+        Authorization: `${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(work),
+    };
+
+    const response = await fetch('http://172.20.0.11:3000/works', requestOptions);
+    if (!response.ok) {
+      throw new Error('Erro ao editar os dados de works na API.');
+    }
+
+    const data = await response.json();
+    console.log('Dados recebidos:', data);
+    return data;
+  } catch (error) {
+    console.error('Erro no front ao editar a task:', error);
+    console.log(error);
+    return null;
+  }
+};
+
 const rmvWorkAPI = async (id) => {
   const token = 'tokenaleatorio';
   console.log(id);
@@ -79,4 +107,6 @@ const getWorksAPI = async () => { // (userId)
   }
 };
 
-export { addWorkAPI, rmvWorkAPI, getWorksAPI };
+export {
+  addWorkAPI, rmvWorkAPI, getWorksAPI, editWorkAPI,
+};

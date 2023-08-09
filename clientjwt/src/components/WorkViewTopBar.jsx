@@ -10,16 +10,38 @@ import { TaskContext, WorkContext } from '../context';
 function WorkViewTopBar({ name, id }) {
   const { addTask } = useContext(TaskContext);
   const { rmvWork } = useContext(WorkContext);
+  const { editWork } = useContext(WorkContext);
 
   const closeView = (event) => {
     event.preventDefault();
     event.target.parentNode.parentNode.style.display = 'none';
   };
 
-  //   const editWork = (event) => {
-  //     console.log('editWork');
-  //     console.log(event.target);
-  //   };
+  const mapFormToTasks = (id) => {
+    const formElements = document.getElementById(`work-view${id}`);
+
+    const idTasks = Array.from(formElements.querySelectorAll('input[name="id"]'));
+    const isCheckeds = Array.from(formElements.querySelectorAll('input[name="isChecked"]'));
+    const nameValues = Array.from(formElements.querySelectorAll('input[name="name"]'));
+    const descritionValues = Array.from(formElements.querySelectorAll('input[name="descrition"]'));
+
+    const tasks = isCheckeds.map((_, index) => ({
+      id: Number(idTasks[index].value),
+      name: nameValues[index].value,
+      descrition: descritionValues[index].value,
+      checked: isCheckeds[index].checked ? 4 : 3,
+    }));
+
+    return tasks;
+  };
+
+  const handleEditWork = (event, id) => {
+    event.preventDefault();
+    const tasks = mapFormToTasks(id);
+    editWork({
+      name: 'Novo Work', descrition: 'Nova Descrição do work', id, tasks,
+    });
+  };
 
   const deleteWork = async (event) => {
     event.preventDefault();
@@ -41,7 +63,7 @@ function WorkViewTopBar({ name, id }) {
     <div className="top-bar" onClick={toggleView}>
       <img src={iconClose} onClick={closeView} alt="Icône do botão Fechar Janela." />
       <img src={iconeDel} onClick={(event) => deleteWork(event)} alt="Icône do botão Deletar Tarefa." />
-      <img src={iconEdit} onClick={(event) => editWork(event)} />
+      <img src={iconEdit} onClick={(event) => handleEditWork(event, id)} />
       {/* <img src={iconSave} onClick={() => alert('salvar')} className="disabled" />  */}
 
       <img src={iconAdd} onClick={(event) => addNewTask(event, null, id)} alt="Icône do botão Adicionar Tarefa." />

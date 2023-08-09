@@ -49,12 +49,28 @@ router.post('/works', async (req, res) => {
     return res.status(HTTP_STATUS_SERVER_ERROR).json({ msg: 'Não foi possível adicionar o trabalho, erro interno.' });
 });
 
+
+const updateTasks = async (tasks) => {
+    const taskPromises =  tasks.map(async (task) => {
+        const sql = 'UPDATE task t SET t.name = ?, t.descrition = ?, t.checked = ? WHERE t.id = ?;';
+        const values = [task.name, task.descrition, task.checked, task.id];
+        return connection.execute(sql, values);
+    });
+
+    await Promise.all(taskPromises);
+};
+
+
+
+
 router.put('/works', async (req, res) => {
     const user = { ...req.body };
     const sql = 'UPDATE work w SET w.name = ?, w.descrition = ? WHERE w.id = ?;';
     const values = [user.name, user.descrition, user.id];
     const status = await connection.execute(sql, values);
     const { insertId, affectedRows } = status[0];
+
+    updateTasks(user.tasks);
 
     if (affectedRows) return res.status(HTTP_STATUS_OK).json({ id: user.id });
     return res.status(HTTP_STATUS_SERVER_ERROR).json({ msg: 'Não foi possível editar a tarefa, erro interno.' });
