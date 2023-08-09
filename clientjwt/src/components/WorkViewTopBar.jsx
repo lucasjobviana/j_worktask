@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import './WorkViewTopBar.css';
 import iconeDel from '../assets/icons/del24.ico';
 import iconClose from '../assets/icons/close24.ico';
-import iconEdit from '../assets/icons/edit24.ico';
-import iconSave from '../assets/icons/save24.ico';
+// import iconEdit from '../assets/icons/edit24.ico';
+import iconEdit from '../assets/icons/save24.ico';
 import iconAdd from '../assets/icons/add24.ico';
 import { TaskContext, WorkContext } from '../context';
 
