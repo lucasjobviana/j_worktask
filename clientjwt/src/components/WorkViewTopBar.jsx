@@ -43,6 +43,7 @@ function WorkViewTopBar({ name, id }) {
       <img src={iconeDel} onClick={(event) => deleteWork(event)} alt="Icône do botão Deletar Tarefa." />
       <img src={iconEdit} onClick={(event) => editWork(event)} />
       {/* <img src={iconSave} onClick={() => alert('salvar')} className="disabled" />  */}
+
       <img src={iconAdd} onClick={(event) => addNewTask(event, null, id)} alt="Icône do botão Adicionar Tarefa." />
       <div className="icon">
         <h4>{name}</h4>
