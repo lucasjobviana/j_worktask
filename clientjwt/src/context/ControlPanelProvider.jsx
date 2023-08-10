@@ -4,6 +4,7 @@ import { ControlPanelContext } from '.';
 export default function ControlPanelProvider({ children }) {
   const [filterBy, setFilterBy] = useState('work');
   const [workViews, setWorkViews] = useState([]);
+  const usingBD = false;
 
   const addWorkView = (workView) => {
     if (workViews.find((w) => w === workView)) return false;
@@ -20,7 +21,7 @@ export default function ControlPanelProvider({ children }) {
 
   return (
     <ControlPanelContext.Provider value={{
-      setFilterBy, filterBy, workViews, addWorkView, rmvWorkView,
+      setFilterBy, filterBy, workViews, addWorkView, rmvWorkView, usingBD,
     }}
     >
       <>
