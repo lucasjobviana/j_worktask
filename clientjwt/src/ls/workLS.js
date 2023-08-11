@@ -6,24 +6,50 @@ const addWorkLS = (work) => {
   return { id: idNewWork };
 };
 
-const editWorkLS = async (work) => {
+const editTasksOfWork = (work) => {
+  const tasks = JSON.parse(localStorage.getItem('tasks'));
+  const idsToAlter = work.tasks.map((t) => t.id);
+  const newTasks = tasks.map((t) => {
+    if (idsToAlter.includes(t.id)) {
+      const newTask = work.tasks.find((task) => task.id === t.id);
+      return { ...newTask, idWork: t.idWork, idParentTask: t.idParentTask || 3 };
+    }
+    return t;
+  });
+  console.log('tasks do ls:');
+  console.log(tasks);
+  console.log('tasks que estao chegando do work');
+  console.log(work.tasks);
+  console.log('tasks nova depois do map');
+  console.log(newTasks);
+  localStorage.setItem('tasks', JSON.stringify(newTasks));
+  return newTasks;
+};
+
+const editWorkLS = (work) => {
   const works = JSON.parse(localStorage.getItem('works'));
   const newWorks = works.map((w) => {
     if (w.id === work.id) {
-      return work;
+      const { tasks, ...workWithoutTask } = work;
+      return workWithoutTask;
     }
     return w;
   });
   localStorage.setItem('works', JSON.stringify(newWorks));
+
+  editTasksOfWork(work);
+  return { work };
 };
 
-const rmvWorkLS = async (id) => {
+const rmvWorkLS = (id) => {
   const works = JSON.parse(localStorage.getItem('works'));
   const newWorks = works.filter((t) => t.id !== id);
   localStorage.setItem('works', JSON.stringify(newWorks));
+  return { affectedRows: 1 };
 };
 
-const getWorksLS = async () => JSON.parse(localStorage.getItem('works'));
+const getWorksLS = () => JSON.parse(localStorage.getItem('works'));
+
 export {
   addWorkLS, rmvWorkLS, getWorksLS, editWorkLS,
 
