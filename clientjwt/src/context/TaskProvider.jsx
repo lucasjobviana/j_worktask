@@ -35,6 +35,10 @@ export default function TaskProvider({ children }) {
     return true;
   };
 
+  useEffect(() => {
+    console.log('TaskProvide.useEffect(null): ', tasks);
+  });
+
   return (
     <TaskContext.Provider value={{
       tasks, setTasks, addTask, editTask, rmvTask,

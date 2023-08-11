@@ -37,9 +37,15 @@ function WorkViewTopBar({ name, id }) {
 
   const handleEditWork = (event, id) => {
     event.preventDefault();
+    const workElement = event.target.parentNode.nextSibling;
+    const descrition = workElement.querySelector('input[name="descritionWork"]').value;
+    const name = workElement.querySelector('input[name="nameWork"]').value;
+    // alert(nameValue);
+    // alert(descritionValue);
+
     const tasks = mapFormToTasks(id);
     editWork({
-      name: 'Novo Work', descrition: 'Nova Descrição do work', id, tasks,
+      name, descrition, id, tasks,
     });
   };
 

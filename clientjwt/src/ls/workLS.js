@@ -12,16 +12,11 @@ const editTasksOfWork = (work) => {
   const newTasks = tasks.map((t) => {
     if (idsToAlter.includes(t.id)) {
       const newTask = work.tasks.find((task) => task.id === t.id);
-      return { ...newTask, idWork: t.idWork, idParentTask: t.idParentTask || 3 };
+      return { ...newTask, idWork: t.idWork, idParentTask: t.idParentTask || null };
     }
     return t;
   });
-  console.log('tasks do ls:');
-  console.log(tasks);
-  console.log('tasks que estao chegando do work');
-  console.log(work.tasks);
-  console.log('tasks nova depois do map');
-  console.log(newTasks);
+
   localStorage.setItem('tasks', JSON.stringify(newTasks));
   return newTasks;
 };

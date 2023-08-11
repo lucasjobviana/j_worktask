@@ -104,6 +104,30 @@
 	/* margin: 0px; */
 }
 
+.span-name {
+	position: relative;
+}
+
+.btn-cover { 
+	background-color: inherit;
+	border: 0px;
+	position: absolute;
+	width: 100%;
+	left: -10%;
+	height: 100%; 
+}
+
+.divInput {
+	position: relative;
+
+	z-index: 1;
+	
+}
+
 .task-view td	{
 	z-index: 1;
+}
+
+.behide	{
+	z-index: -1;
 }
