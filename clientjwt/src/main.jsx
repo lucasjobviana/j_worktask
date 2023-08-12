@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min';
+import { HashRouter } from 'react-router-dom/cjs/react-router-dom';
 import App from './App.jsx';
 import WorkProvider from './context/WorkProvider';
 import TaskProvider from './context/TaskProvider';
@@ -10,7 +10,7 @@ import ControlPanelProvider from './context/ControlPanelProvider';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <BrowserRouter>
+  <HashRouter basename="/" >
     <ControlPanelProvider>
       <TaskProvider>
         <WorkProvider>
@@ -22,5 +22,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         </WorkProvider>
       </TaskProvider>
     </ControlPanelProvider>
-  </BrowserRouter>,
+  </HashRouter>,
 );
