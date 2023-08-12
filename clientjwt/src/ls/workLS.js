@@ -1,7 +1,6 @@
 const addWorkLS = (work) => {
   const works = JSON.parse(localStorage.getItem('works'));
-
-  const idNewWork = works.length + 1;
+  const idNewWork = works.length > 0 ? Number(Math.max(...works.map((w)=>w.id)) + 1) : 1 ;
   localStorage.setItem('works', JSON.stringify([...works, { ...work, id: idNewWork }]));
   return { id: idNewWork };
 };
@@ -36,10 +35,17 @@ const editWorkLS = (work) => {
   return { work };
 };
 
+const rmvTasksOfWork = (id=0) => {
+	const tasks = JSON.parse(localStorage.getItem('tasks'));
+	const newTasks = tasks.filter((task)=> task.idWork !== id);
+	localStorage.setItem('tasks',JSON.stringify(newTasks));
+}
+
 const rmvWorkLS = (id) => {
   const works = JSON.parse(localStorage.getItem('works'));
   const newWorks = works.filter((t) => t.id !== id);
   localStorage.setItem('works', JSON.stringify(newWorks));
+  rmvTasksOfWork(id);
   return { affectedRows: 1 };
 };
 

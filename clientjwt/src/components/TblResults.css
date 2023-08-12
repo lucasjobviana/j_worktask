@@ -1,5 +1,6 @@
 .tbl-results {
-	/* position: relative; */
+	
+	
 }
 
 .tbl-results tr {
@@ -8,4 +9,19 @@
 
 .tbl-results {
 	background-color: white;
+	width: 97vw;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	
+	margin-top:20px;
+}
+
+.tbl-results table {
+	 text-align:center;
+	 max-width: 100vw;
+}
+
+.tbl-results table tr td:nth-child(2) {
+	max-width: 80%;
 }

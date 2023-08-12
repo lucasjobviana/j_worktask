@@ -23,7 +23,7 @@ function TblResults() {
           <tr>
             <th>Id</th>
             <th>Nome</th>
-            <th>Descricao</th>
+             
             <th>Tarefas</th>
             <th>Finalizadas</th>
           </tr>
@@ -34,7 +34,7 @@ function TblResults() {
               <tr key={`work_${index}`} onClick={() => showWorkDetails(work.id)}>
                 <td>{work.id}</td>
                 <td>{work.name}</td>
-                <td>{work.desc}</td>
+                 
                 <td>
                   {
                     tasks.reduce(

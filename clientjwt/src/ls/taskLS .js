@@ -1,6 +1,6 @@
 const addTaskLS = (task) => {
   const tasks = JSON.parse(localStorage.getItem('tasks'));
-  const idNewTask = tasks.length + 1;
+  const idNewTask = tasks.length > 0 ? Number(Math.max(...works.map((t)=>t.id)) + 1) : 1;
   localStorage.setItem('tasks', JSON.stringify([...tasks, { ...task, id: idNewTask }]));
   return { id: idNewTask };
 };
