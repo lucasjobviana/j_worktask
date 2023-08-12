@@ -1,7 +1,16 @@
 const addTaskLS = (task) => {
+  console.log('task:');
+  console.log(task);
+  console.log('tasks do ls: ');
+  console.log(JSON.parse(localStorage.getItem('tasks')));
+
   const tasks = JSON.parse(localStorage.getItem('tasks'));
-  const idNewTask = tasks.length > 0 ? Number(Math.max(...works.map((t)=>t.id)) + 1) : 1;
+  const idNewTask = tasks.length > 0 ? Number(Math.max(...tasks.map((t) => t.id)) + 1) : 1;
+  console.log('idNewTask: ', idNewTask);
   localStorage.setItem('tasks', JSON.stringify([...tasks, { ...task, id: idNewTask }]));
+  console.log('new tasks do ls:');
+  console.log(JSON.parse(localStorage.getItem('tasks')));
+  console.log('retorno : ', idNewTask);
   return { id: idNewTask };
 };
 

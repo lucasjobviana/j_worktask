@@ -1,9 +1,10 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React, {
   useRef, useEffect, useContext, useState,
 } from 'react';
 import WorkViewTopBar from './WorkViewTopBar';
 import './WorkView.css';
-import { TaskContext } from '../context';
+import { TaskContext } from '../../context';
 import TaskViews from './TaskViews';
 
 function WorkView({ work }) {
@@ -17,7 +18,7 @@ function WorkView({ work }) {
     divRef.current.focus();
   }, []);
 
-  const toogleEdit = (event, id) => {
+  const toogleEdit = (event) => {
     event.preventDefault();
     event.target.classList.add('behide');
     setDisabledEdit(false);
@@ -26,18 +27,19 @@ function WorkView({ work }) {
   const tasksOfWork = tasks.filter((t) => (t.idWork === work.id && t.idParentTask === null));//
 
   return (
-    <div ref={divRef} tabIndex={0} className="work-view" id={`work-view${work.id}`}>
+    <div className="work-view" id={`work-view${work.id}`}>
       <WorkViewTopBar name={work.name} id={work.id} />
       <div className="work-content">
         <div>
-          {work.id}
+          <input type="number" disabled value={work.id} />
+
           <div className="divInput">
-            <button type="button" className="btn-cover" onClick={(event) => toogleEdit(event, work.id)} />
+            <button id="iptWorkName" ref={divRef} tabIndex={0} type="button" className="btn-cover" onClick={(event) => toogleEdit(event)} />
             <input disabled={disabledEdit} className="td-editable" name="nameWork" type="text" value={workName} onInput={(e) => setWorkName(e.target.value)} />
           </div>
 
           <div className="divInput">
-            <button type="button" className="btn-cover" onClick={(event) => toogleEdit(event, work.id)} />
+            <button type="button" className="btn-cover" onClick={(event) => toogleEdit(event)} />
             <input disabled={disabledEdit} className="td-editable" name="descritionWork" type="text" value={workDescrition} onInput={(e) => setWorkDescrition(e.target.value)} />
           </div>
 

@@ -1,17 +1,17 @@
-import React,{ useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import { StatusWorkContext } from '.';
 
-export default function StatusTaskProvider({ children }) {  
+export default function StatusTaskProvider({ children }) {
   const [statusWork, setStatusWork] = useState([]);
-	useEffect(()=>{
-		console.log('StatusWorkProvider.useEffect(null): ', statusWork);
-	});  
+
+  const contextValue = useMemo(() => ({
+    statusWork,
+    setStatusWork,
+  }), [statusWork, setStatusWork]);
 
   return (
-    <StatusWorkContext.Provider value={{ statusWork, setStatusWork }}>
-      <>
-        { children }
-      </>
+    <StatusWorkContext.Provider value={contextValue}>
+      { children }
     </StatusWorkContext.Provider>
   );
 }

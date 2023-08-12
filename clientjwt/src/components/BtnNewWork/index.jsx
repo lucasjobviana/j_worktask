@@ -1,9 +1,9 @@
 import React from 'react';
-import FormNewJob from './FormNewJob';
-import './BtnNewJob.css';
-import iconeAdd from '../assets/icons/add24.ico';
+import FormNewJob from './FormNewWork';
+import './BtnNewWork.css';
+import iconeAdd from '../../assets/icons/add24.ico';
 
-function BtnNewJob() {
+function BtnNewWork() {
   const toggleForm = ({ target }) => {
     target.nextSibling.classList.toggle('disabled');
   };
@@ -16,4 +16,4 @@ function BtnNewJob() {
   );
 }
 
-export default BtnNewJob;
+export default BtnNewWork;
