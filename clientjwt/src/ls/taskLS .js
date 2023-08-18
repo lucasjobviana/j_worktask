@@ -26,9 +26,20 @@ const editTaskLS = (task) => {
   return { task };
 };
 
+function deleteTaskAndChildren(taskId, tasks) {
+  const taskToDelete = tasks.find((task) => task.id === taskId);
+  if (!taskToDelete) return null;
+  const childTasksToDelete = tasks.filter((task) => task.idParentTask === taskId);
+  childTasksToDelete.forEach((childTask) => {
+    deleteTaskAndChildren(childTask.id, tasks);
+  });
+  tasks.splice(tasks.indexOf(taskToDelete), 1);
+  return tasks;
+}
+
 const rmvTaskLS = (id) => {
   const tasks = JSON.parse(localStorage.getItem('tasks'));
-  const newTasks = tasks.filter((t) => t.id !== id);
+  const newTasks = deleteTaskAndChildren(id, tasks); // tasks.filter((t) => t.id !== id);
   localStorage.setItem('tasks', JSON.stringify(newTasks));
   return { affectedRows: 1 };
 };

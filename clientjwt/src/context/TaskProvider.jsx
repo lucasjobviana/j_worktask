@@ -16,8 +16,9 @@ export default function TaskProvider({ children }) {
   const rmvTask = async (id) => {
     if (!tasks.find((t) => t.id === id)) return false;
     const { affectedRows } = await salveOnMemory('rmvTask', id);
-    const newTasks = tasks.filter((t) => t.id !== id);
+    const newTasks = tasks.filter((t) => t.id !== id && t.idParentTask !== id);
     if (affectedRows) setTasks(newTasks);
+    console.log('Novas     Tarefas:', newTasks);
     return true;
   };
 
