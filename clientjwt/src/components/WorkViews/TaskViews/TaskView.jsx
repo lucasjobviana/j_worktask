@@ -1,16 +1,18 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
+/* eslint-disable import/no-cycle */
 import React, {
   useContext, useState, useRef, useEffect,
 } from 'react';
-import { TaskContext } from '../context';
-import TaskViews from './TaskViews';
-import iconeAdd from '../assets/icons/add24.ico';
-import iconDel from '../assets/icons/del24.ico';
-import iconClose from '../assets/icons/arrowUp24.ico';
-import iconEdit from '../assets/icons/edit24.ico';
-import iconSave from '../assets/icons/save24.ico';
+import { TaskContext } from '../../../context';
+import TaskViews from '.';
+import iconeAdd from '../../../assets/icons/add24.ico';
+import iconDel from '../../../assets/icons/del24.ico';
+import iconClose from '../../../assets/icons/arrowUp24.ico';
+import iconEdit from '../../../assets/icons/edit24.ico';
+import iconSave from '../../../assets/icons/save24.ico';
 import './TaskView.css';
 
-function TaskView({ task, left = 0, tabs = [] }) {
+function TaskView({ task, tabs = [] }) {
   const {
     tasks, addTask, editTask, rmvTask,
   } = useContext(TaskContext);
@@ -19,7 +21,7 @@ function TaskView({ task, left = 0, tabs = [] }) {
   const [check, setCheck] = useState(task.checked || 3);
   const [editBtnIcon, setEditBtnIcon] = useState(true);
   const subTasks = tasks.filter((t) => t.idParentTask === task.id);
-  const subTaskElements = <TaskViews taskViews={subTasks} left={left + 5} tabs={[...tabs, true]} />;
+  const subTaskElements = <TaskViews taskViews={subTasks} tabs={[...tabs, 'tabCharacter']} />;
   const tabElements = tabs.map(() => '   ').join('');
   const newTarefaElement = useRef(null);
 
@@ -45,9 +47,11 @@ function TaskView({ task, left = 0, tabs = [] }) {
 
   const editTaskHandle = async (event, { id, idWork, idParentTask }, idElement) => {
     event.preventDefault();
+
     await editTask({
       name: nameText, descrition: descritionText, idWork, id, idParentTask, checked: check,
-    }) && toogleEditable(idElement);
+    });
+    toogleEditable(idElement);
   };
 
   const handleChangeName = ({ target }) => {

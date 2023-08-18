@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import './TblResults.css';
-import { ControlPanelContext, WorkContext, TaskContext } from '../context';
+import { ControlPanelContext, WorkContext, TaskContext } from '../../context';
 
 function TblResults() {
   const { addWorkView } = useContext(ControlPanelContext);
@@ -23,23 +23,23 @@ function TblResults() {
           <tr>
             <th>Id</th>
             <th>Nome</th>
-             
+
             <th>Tarefas</th>
             <th>Finalizadas</th>
           </tr>
         </thead>
         <tbody>
           {
-            works.map((work, index) => (
-              <tr key={`work_${index}`} onClick={() => showWorkDetails(work.id)}>
+            works.map((work) => (
+              <tr key={`work_${work.id}`} onClick={() => showWorkDetails(work.id)}>
                 <td>{work.id}</td>
                 <td>{work.name}</td>
-                 
+
                 <td>
                   {
                     tasks.reduce(
                       (cont, w) => {
-                        if (w.idWork === work.id) { cont += 1; } return cont;
+                        if (w.idWork === work.id) { return cont + 1; } return cont;
                       },
                       0,
                     )
@@ -49,7 +49,8 @@ function TblResults() {
                   {
                     tasks.reduce(
                       (cont, w) => {
-                        if (w.checked === 4 && w.idWork === work.id) { cont += 1; } return cont;
+                        if (w.checked === 4 && w.idWork === work.id) { return cont + 1; }
+                        return cont;
                       },
                       0,
                     )

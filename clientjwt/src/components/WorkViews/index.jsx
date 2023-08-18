@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import WorkView from './WorkView';
-import './BtnNewJob.css';
-import { ControlPanelContext, WorkContext } from '../context';
+import { ControlPanelContext, WorkContext } from '../../context';
 
 function WorkViews() {
   const { workViews } = useContext(ControlPanelContext);
@@ -10,7 +9,7 @@ function WorkViews() {
   return (
     <div className="work-views">
       {
-        workViews.map((w, index) => <WorkView key={`Work_view${index}`} work={works.find((work) => work.id == w) || 0} />)
+        workViews.map((w) => <WorkView key={`Work_view${w.id}`} work={works.find((work) => work.id === w) || 0} />)
       }
     </div>
   );

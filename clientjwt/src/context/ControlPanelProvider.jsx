@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { ControlPanelContext } from '.';
 
 export default function ControlPanelProvider({ children }) {
@@ -19,14 +19,18 @@ export default function ControlPanelProvider({ children }) {
     return true;
   };
 
+  const contextValue = useMemo(() => ({
+    setFilterBy,
+    filterBy,
+    workViews,
+    addWorkView,
+    rmvWorkView,
+    usingBD,
+  }), [setFilterBy, filterBy, workViews, addWorkView, rmvWorkView, usingBD]);
+
   return (
-    <ControlPanelContext.Provider value={{
-      setFilterBy, filterBy, workViews, addWorkView, rmvWorkView, usingBD,
-    }}
-    >
-      <>
-        { children }
-      </>
+    <ControlPanelContext.Provider value={contextValue}>
+      { children }
     </ControlPanelContext.Provider>
   );
 }

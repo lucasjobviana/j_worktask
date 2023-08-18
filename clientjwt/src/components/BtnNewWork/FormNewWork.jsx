@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
-import { WorkContext } from '../context';
-import iconSave from '../assets/icons/save24.ico';
+import { WorkContext } from '../../context';
+// import iconSave from '../../assets/icons/save24.ico';
 
 function FormNewJob() {
   const { addWork } = useContext(WorkContext);

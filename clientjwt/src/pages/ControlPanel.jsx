@@ -1,9 +1,8 @@
 import React from 'react';
-// import PropTypes from 'prop-types'
-import BtnNewJob from '../components/BtnNewJob';
-import InptSearch from '../components/InptSearch';
 import TblResults from '../components/TblResults';
 import WorkViews from '../components/WorkViews';
+import BtnNewWork from '../components/BtnNewWork';
+import InptSearch from '../components/InptSearch';
 import './ControlPanel.css';
 
 function ControlPanel() {
@@ -11,7 +10,7 @@ function ControlPanel() {
     <div className="control-panel-container">
       <h1>Lista de Tarefas 1.0</h1>
       <InptSearch />
-      <BtnNewJob />
+      <BtnNewWork />
       <TblResults />
       <WorkViews />
     </div>

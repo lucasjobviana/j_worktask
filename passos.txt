@@ -1,3 +1,0 @@
-docker build -t j_worktask_front .
---rm para remover automaticamente o container
-//para vite adicionar CMD ["dev", "--", "--host", "0.0.0.0"]
